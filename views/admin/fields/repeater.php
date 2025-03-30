@@ -2,7 +2,7 @@
 /**
  * Outputs a repeater field.
  *
- * @package Fomo_Notifications
+ * @package PostHog
  * @author WP Zinc
  */
 

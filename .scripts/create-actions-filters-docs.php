@@ -13,7 +13,7 @@ $filter_docs = $read_actions_filters->run(
     true, // Extract filters.
     false, // Extract actions.
     'markdown', // Return as HTML/markdown compatible with GitHub.
-    '\'fomo_notifications_', // Only build Docs for actions starting with convertkit_.
+    '\'posthog_', // Only build Docs for actions starting with posthog_.
     false, // Change prefix.
     true // Return by file.
 );
@@ -27,7 +27,7 @@ $action_docs = $read_actions_filters->run(
     false, // Extract filters.
     true, // Extract actions.
     'markdown', // Return as HTML/markdown compatible with GitHub.
-    '\'fomo_notifications_', // Only build Docs for actions starting with convertkit_.
+    '\'posthog_', // Only build Docs for actions starting with posthog_.
     false, // Change prefix.
     true // Return by file.
 );

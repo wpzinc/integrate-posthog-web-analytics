@@ -2,7 +2,7 @@
 /**
  * Outputs a setting field.
  *
- * @package Fomo_Notifications
+ * @package PostHog
  * @author WP Zinc
  */
 

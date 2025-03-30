@@ -2,12 +2,12 @@
 php create-actions-filters-docs.php
 
 # Generate .pot file
-php -n $(which wp) i18n make-pot ../ ../languages/fomo-notifications.pot
+php -n $(which wp) i18n make-pot ../ ../languages/posthog.pot
 
 # Build ZIP file, excluding non-Plugin files
 cd ..
-rm fomo-notifications.zip
-zip -r fomo-notifications.zip . \
+rm posthog.zip
+zip -r posthog.zip . \
 -x "*.scss" \
 -x "*.git*" \
 -x ".scripts/*" \

@@ -18,7 +18,7 @@ class Plugin extends \Codeception\Module
 	 *
 	 * @param   AcceptanceTester $I  Tester.
 	 */
-	public function activateFOMONotificationsPlugin($I)
+	public function activatePostHogPlugin($I)
 	{
 		$I->activateThirdPartyPlugin($I, 'posthog');
 	}
@@ -31,7 +31,7 @@ class Plugin extends \Codeception\Module
 	 *
 	 * @param   AcceptanceTester $I  Tester.
 	 */
-	public function deactivateFOMONotificationsPlugin($I)
+	public function deactivatePostHogPlugin($I)
 	{
 		$I->deactivateThirdPartyPlugin($I, 'posthog');
 	}

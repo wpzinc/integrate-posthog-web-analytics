@@ -23,6 +23,12 @@ PostHog for WordPress adds the PostHog web analytics tracking script to your Wor
 
 [youtube https://www.youtube.com/watch?v=vw7eIBSNwl8]
 
+=== External services ===
+
+This plugin stores your PostHog API and Project ID, using them to insert the required JavaScript <script> tag that permits PostHog to collect your web site's analytics in your PostHog account.
+
+Refer to PostHog's [privacy policy](https://posthog.com/privacy) for more information.
+
 = Documentation =
 
 Full Plugin documentation can be found [here](https://www.wpzinc.com/documentation/posthog).
