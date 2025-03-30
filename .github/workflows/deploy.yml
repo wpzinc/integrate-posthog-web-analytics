@@ -11,7 +11,7 @@ jobs:
     
     # Virtual Environment to use
     # @see: https://github.com/actions/virtual-environments
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     # Steps to deploy
     steps:
@@ -19,16 +19,8 @@ jobs:
       - name: Checkout Plugin
         uses: actions/checkout@v4
 
-      # Installs required packages that must be included in the Plugin
-      # as specified in composer.json's "require" section.
-      # "require-dev" is ignored by design, as these are only needed for
-      # testing
-      - name: Run Composer
-        run: composer install --no-dev
-
       # Deploy to wordpress.org, if expected files exist.
       - name: WordPress Plugin Deploy
-        if: steps.check_files.outputs.files_exists == 'true'
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         with:
@@ -36,7 +28,7 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: fomo-notifications
+          SLUG: posthog
           
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
