@@ -1,0 +1,121 @@
+# Copyright (C) 2025 WP Zinc
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: PostHog 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/posthog\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-30T13:20:12+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: posthog\n"
+
+#. Plugin Name of the plugin
+#: posthog.php
+#: includes/admin/class-posthog-admin-settings.php:94
+#: includes/class-posthog.php:104
+#: includes/class-posthog.php:105
+msgid "PostHog"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: posthog.php
+msgid "http://www.wpzinc.com/documentation/posthog"
+msgstr ""
+
+#. Description of the plugin
+#: posthog.php
+msgid "Web analytics using PostHog"
+msgstr ""
+
+#. Author of the plugin
+#: posthog.php
+msgid "WP Zinc"
+msgstr ""
+
+#. Author URI of the plugin
+#: posthog.php
+msgid "http://www.wpzinc.com"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:37
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:38
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:102
+msgid "Project API Key"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:107
+msgid "Copy the Project API Key from the PostHog > Settings > Project, entering it here."
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:111
+msgid "Project ID"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:116
+msgid "Copy the Project ID from the PostHog > Settings > Project, entering it here."
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:120
+msgid "Project region"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:125
+msgid "Define the region where your PostHog data is hosted."
+msgstr ""
+
+#: includes/admin/class-posthog-admin-section-general.php:171
+msgid "Enter your Project API Key and Project ID to enable web analytics tracking."
+msgstr ""
+
+#: includes/admin/class-posthog-admin-settings.php:97
+#: includes/admin/class-posthog-admin-settings.php:180
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-settings.php:132
+msgid "If you need help setting up the plugin please refer to the"
+msgstr ""
+
+#: includes/admin/class-posthog-admin-settings.php:134
+msgid "plugin documentation"
+msgstr ""
+
+#. translators: %1$s: PHP class name
+#: includes/class-posthog.php:185
+msgid "PostHog Error: Could not load Plugin class <strong>%1$s</strong>"
+msgstr ""
+
+#: includes/class-posthog.php:195
+msgid "PostHog Error"
+msgstr ""
+
+#: views/admin/fields/field.php:118
+msgid "No"
+msgstr ""
+
+#: views/admin/fields/field.php:119
+msgid "Yes"
+msgstr ""
+
+#: views/admin/fields/repeater.php:25
+msgid "Actions"
+msgstr ""
+
+#: views/admin/fields/repeater.php:33
+msgid "Add"
+msgstr ""
+
+#: views/admin/fields/repeater.php:53
+msgid "Delete"
+msgstr ""
