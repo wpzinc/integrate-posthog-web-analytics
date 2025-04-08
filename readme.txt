@@ -1,4 +1,4 @@
-=== PostHog ===
+=== Integrate PostHog Web Analytics ===
 Contributors: wpzinc
 Donate link: https://www.wpzinc.com/documentation/posthog
 Tags: posthog, analytics
@@ -9,11 +9,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Web analytics using PostHog
+Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site.
 
 == Description ==
 
-PostHog for WordPress adds the PostHog web analytics tracking script to your WordPress web site.  With PostHog, you can:
+Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site.  With PostHog, you can:
 * Track visitor behavior and engagement across your WordPress site
 * Analyze user journeys and conversion funnels
 * Monitor key metrics like pageviews, session duration, and bounce rates
@@ -22,6 +22,8 @@ PostHog for WordPress adds the PostHog web analytics tracking script to your Wor
 * Make data-driven decisions to optimize your site
 
 [youtube https://www.youtube.com/watch?v=vw7eIBSNwl8]
+
+For those needing to meet GDPR, HIPAA or other privacy requirements, the plugin can be set in a cookieless mode.
 
 === External services ===
 
@@ -36,8 +38,8 @@ Full Plugin documentation can be found [here](https://www.wpzinc.com/documentati
 == Installation ==
 
 1. Navigate to `Plugins > Add New Plugin` in WordPress
-2. Type `PostHog` in the Search Plugins search field, and press the Enter key
-3. Click `Install Now` beside PostHog
+2. Type `Integrate PostHog Web Analytics` in the Search Plugins search field, and press the Enter key
+3. Click `Install Now` beside `Integrate PostHog Web Analytics`
 4. Once installed, click `Activate`
 
 == Configuration ==
@@ -45,6 +47,11 @@ Full Plugin documentation can be found [here](https://www.wpzinc.com/documentati
 To configure the Plugin, follow the documentation [here](https://www.wpzinc.com/documentation/posthog).
 
 == Frequently asked questions ==
+
+= Is this GDPR, HIPAA and Privacy Compliant? =
+
+Yes - you'll need to set the `Peristence` setting to `Memory` at `Settings > PostHog Web Analytics`. This will use a cookieless method for data collection,
+ensuring GDPR, HIPAA and other privacy compliance.
 
 = Do I need a paid PostHog account? =
 

@@ -1,17 +1,17 @@
 <?php
 /**
- * PostHog WordPress Plugin
+ * Integrate PostHog Web Analytics Web Analytics WordPress Plugin
  *
  * @package PostHog
  * @author WP Zinc
  *
  * @wordpress-plugin
- * Plugin Name: PostHog
+ * Plugin Name: Integrate PostHog Web Analytics
  * Plugin URI: http://www.wpzinc.com/documentation/posthog
  * Version: 1.0.0
  * Author: WP Zinc
  * Author URI: http://www.wpzinc.com
- * Description: Web analytics using PostHog
+ * Description: Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site.
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: posthog

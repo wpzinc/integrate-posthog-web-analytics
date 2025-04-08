@@ -129,6 +129,22 @@ class PostHog_Admin_Section_General {
 					),
 				),
 			),
+			'persistence' => array(
+				'title'   => __( 'Persistence', 'posthog' ),
+				'section' => $this->name,
+				'props'   => array(
+					'type'        => 'select',
+					'value'       => $this->settings->persistence(),
+					'description' => esc_html__( 'Where to store user data. Use `memory` to meet GDPR, HIPAA or other privacy requirements.', 'posthog' ),
+					'options'     => array(
+						'localStorage+cookie' 	=> __( 'Local Storage + Cookie', 'posthog' ),
+						'cookie' 				=> __( 'Cookie', 'posthog' ),
+						'localStorage' 			=> __( 'Local Storage', 'posthog' ),
+						'sessionStorage' 		=> __( 'Session Storage', 'posthog' ),
+						'memory' 				=> __( 'Memory', 'posthog' ),
+					),
+				),
+			),
 		);
 
 		/**

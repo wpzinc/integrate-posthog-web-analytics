@@ -90,6 +90,39 @@ class PostHog_Settings {
 	}
 
 	/**
+	 * Returns the Persistence setting.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @return  string
+	 */
+	public function persistence() {
+
+		return $this->settings['persistence'];
+
+	}
+
+	/**
+	 * Returns an object string of configuration options for the PostHog JS SDK.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @return  string
+	 */
+	public function get_js_init_config() {
+
+		return wp_unslash(
+			wp_json_encode(
+				array(
+					'api_host' 	  => 'https://' . esc_attr( $this->project_region() ) . '.i.posthog.com',
+					'persistence' => esc_attr( $this->persistence() ),
+				)
+			)
+		);
+
+	}
+
+	/**
 	 * The default settings, used when the Plugin Settings haven't been saved
 	 * e.g. on a new installation.
 	 *
@@ -103,6 +136,7 @@ class PostHog_Settings {
 			'project_api_key' => '',
 			'project_id'      => '',
 			'project_region'  => 'us',
+			'persistence'     => 'localStorage+cookie',
 		);
 
 		/**
