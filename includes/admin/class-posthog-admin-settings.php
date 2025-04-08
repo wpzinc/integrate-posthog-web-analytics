@@ -91,7 +91,7 @@ class PostHog_Admin_Settings {
 
 		<header style="--wpzinc-logo: url('<?php echo esc_attr( POSTHOG_PLUGIN_URL ); // @phpstan-ignore-line ?>assets/images/icons/logo.svg')">
 			<h1>
-				<?php echo esc_html_e( 'PostHog', 'posthog' ); ?>
+				<?php echo esc_html_e( 'Integrate PostHog Web Analytics', 'posthog' ); ?>
 
 				<span>
 					<?php esc_html_e( 'Settings', 'posthog' ); ?>

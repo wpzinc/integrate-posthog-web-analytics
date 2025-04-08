@@ -66,7 +66,7 @@ class PostHog {
 		// Plugin Details.
 		$this->plugin                    = new stdClass();
 		$this->plugin->name              = 'posthog';
-		$this->plugin->displayName       = 'PostHog';
+		$this->plugin->displayName       = 'Integrate PostHog Web Analytics';
 		$this->plugin->author_name       = 'WP Zinc';
 		$this->plugin->version           = POSTHOG_PLUGIN_VERSION;
 		$this->plugin->buildDate         = POSTHOG_PLUGIN_BUILD_DATE;
@@ -101,8 +101,8 @@ class PostHog {
 	public function admin_menu( $minimum_capability ) {
 
 		add_options_page(
-			__( 'PostHog', 'posthog' ),
-			__( 'PostHog', 'posthog' ),
+			__( 'Integrate PostHog Web Analytics', 'posthog' ),
+			__( 'Integrate PostHog Web Analytics', 'posthog' ),
 			$minimum_capability,
 			$this->plugin->name,
 			array( $this->classes['admin_settings'], 'display_settings_page' )
