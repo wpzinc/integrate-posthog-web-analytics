@@ -91,10 +91,10 @@ class PostHog_Admin_Settings {
 
 		<header style="--wpzinc-logo: url('<?php echo esc_attr( POSTHOG_PLUGIN_URL ); // @phpstan-ignore-line ?>assets/images/icons/logo.svg')">
 			<h1>
-				<?php echo esc_html_e( 'Integrate PostHog Web Analytics', 'posthog' ); ?>
+				<?php echo esc_html_e( 'Integrate PostHog Web Analytics', 'integrate-posthog-web-analytics' ); ?>
 
 				<span>
-					<?php esc_html_e( 'Settings', 'posthog' ); ?>
+					<?php esc_html_e( 'Settings', 'integrate-posthog-web-analytics' ); ?>
 				</span>
 			</h1>
 		</header>
@@ -129,9 +129,9 @@ class PostHog_Admin_Settings {
 					if ( $documentation_url !== false ) {
 						printf(
 							'%s <a href="%s" target="_blank">%s</a>',
-							esc_html__( 'If you need help setting up the plugin please refer to the', 'posthog' ),
+							esc_html__( 'If you need help setting up the plugin please refer to the', 'integrate-posthog-web-analytics' ),
 							esc_attr( $documentation_url ),
-							esc_html__( 'plugin documentation', 'posthog' )
+							esc_html__( 'plugin documentation', 'integrate-posthog-web-analytics' )
 						);
 					}
 					?>
@@ -177,7 +177,7 @@ class PostHog_Admin_Settings {
 				),
 				admin_url( 'admin.php' )
 			),
-			__( 'Settings', 'posthog' )
+			__( 'Settings', 'integrate-posthog-web-analytics' )
 		);
 
 		/**

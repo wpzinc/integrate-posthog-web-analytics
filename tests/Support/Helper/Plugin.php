@@ -20,7 +20,7 @@ class Plugin extends \Codeception\Module
 	 */
 	public function activatePostHogPlugin($I)
 	{
-		$I->activateThirdPartyPlugin($I, 'posthog');
+		$I->activateThirdPartyPlugin($I, 'integrate-posthog-web-analytics');
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Plugin extends \Codeception\Module
 	 */
 	public function deactivatePostHogPlugin($I)
 	{
-		$I->deactivateThirdPartyPlugin($I, 'posthog');
+		$I->deactivateThirdPartyPlugin($I, 'integrate-posthog-web-analytics');
 	}
 
 	/**

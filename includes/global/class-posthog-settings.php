@@ -114,7 +114,7 @@ class PostHog_Settings {
 		return wp_unslash(
 			wp_json_encode(
 				array(
-					'api_host' 	  => 'https://' . esc_attr( $this->project_region() ) . '.i.posthog.com',
+					'api_host'    => 'https://' . esc_attr( $this->project_region() ) . '.i.posthog.com',
 					'persistence' => esc_attr( $this->persistence() ),
 				)
 			)

@@ -115,8 +115,8 @@ switch ( $field['type'] ) {
 			<?php
 			$field['value'] = ( isset( $field['value'] ) ? $field['value'] : '' );
 			?>
-			<option value="0"<?php selected( $field['value'], 0 ); ?>><?php esc_html_e( 'No', 'posthog' ); ?></option>
-			<option value="1"<?php selected( $field['value'], 1 ); ?>><?php esc_html_e( 'Yes', 'posthog' ); ?></option>
+			<option value="0"<?php selected( $field['value'], 0 ); ?>><?php esc_html_e( 'No', 'integrate-posthog-web-analytics' ); ?></option>
+			<option value="1"<?php selected( $field['value'], 1 ); ?>><?php esc_html_e( 'Yes', 'integrate-posthog-web-analytics' ); ?></option>
 		</select>
 		<?php
 		break;

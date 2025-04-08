@@ -1,6 +1,6 @@
 {
-    "name": "n7studios/posthog",
-    "description": "PostHog Plugin",
+    "name": "n7studios/integrate-posthog-web-analytics",
+    "description": "Integrate PostHog Web Analytics Plugin",
     "type": "project",
     "license": "GPLv3",
     "require-dev": {

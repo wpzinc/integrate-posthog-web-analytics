@@ -101,8 +101,8 @@ class PostHog {
 	public function admin_menu( $minimum_capability ) {
 
 		add_options_page(
-			__( 'Integrate PostHog Web Analytics', 'posthog' ),
-			__( 'Integrate PostHog Web Analytics', 'posthog' ),
+			__( 'Integrate PostHog Web Analytics', 'integrate-posthog-web-analytics' ),
+			__( 'Integrate PostHog Web Analytics', 'integrate-posthog-web-analytics' ),
 			$minimum_capability,
 			$this->plugin->name,
 			array( $this->classes['admin_settings'], 'display_settings_page' )
@@ -182,7 +182,7 @@ class PostHog {
 				'posthog_get_class',
 				sprintf(
 					/* translators: %1$s: PHP class name */
-					__( 'PostHog Error: Could not load Plugin class <strong>%1$s</strong>', 'posthog' ),
+					__( 'PostHog Error: Could not load Plugin class <strong>%1$s</strong>', 'integrate-posthog-web-analytics' ),
 					$name
 				)
 			);
@@ -192,7 +192,7 @@ class PostHog {
 			if ( is_admin() ) {
 				wp_die(
 					esc_attr( $error->get_error_message() ),
-					esc_html__( 'PostHog Error', 'posthog' ),
+					esc_html__( 'PostHog Error', 'integrate-posthog-web-analytics' ),
 					array(
 						'back_link' => true,
 					)

@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 					?>
-					<th><?php esc_html_e( 'Actions', 'posthog' ); ?></th>
+					<th><?php esc_html_e( 'Actions', 'integrate-posthog-web-analytics' ); ?></th>
 				</tr>
 			</thead>
 
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<tr>
 					<td colspan="<?php echo esc_attr( count( $field['sub_fields'] ) + 1 ); ?>">
 						<button class="wpzinc-add-table-row button" data-table-row-selector="repeater-row">
-							<?php esc_html_e( 'Add', 'posthog' ); ?>
+							<?php esc_html_e( 'Add', 'integrate-posthog-web-analytics' ); ?>
 						</button>
 					</td>
 				</tr>
@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 					<td>
 						<a href="#" class="wpzinc-delete-table-row">
-							<?php esc_html_e( 'Delete', 'posthog' ); ?>
+							<?php esc_html_e( 'Delete', 'integrate-posthog-web-analytics' ); ?>
 						</a>
 					</td>
 				</tr>
