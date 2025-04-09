@@ -17,10 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package PostHog
  * @author WP Zinc
  */
-class PostHog_Admin_Section_General {
+class Integrate_PHWA_Admin_Section_General {
 
-	use PostHog_Admin_Section_Trait;
-	use PostHog_Admin_Section_Fields_Trait;
+	use Integrate_PHWA_Admin_Section_Trait;
+	use Integrate_PHWA_Admin_Section_Fields_Trait;
 
 	/**
 	 * Constructor.
@@ -30,7 +30,7 @@ class PostHog_Admin_Section_General {
 	public function __construct() {
 
 		// Define the class that reads/writes settings.
-		$this->settings = new PostHog_Settings();
+		$this->settings = new Integrate_PHWA_Settings();
 
 		// Define the programmatic name, title, tab and settings key.
 		$this->name         = 'general';
@@ -54,14 +54,14 @@ class PostHog_Admin_Section_General {
 		 *
 		 * @param   array   $settings_sections  Settings sections.
 		 */
-		$settings_sections = apply_filters( 'posthog_admin_section_general_sections', $settings_sections );
+		$settings_sections = apply_filters( 'integrate_phwa_admin_section_general_sections', $settings_sections );
 
 		// Assign to class.
 		$this->settings_sections = $settings_sections;
 		unset( $settings_sections );
 
 		// Enqueue CSS.
-		add_action( 'posthog_admin_settings_enqueue_styles', array( $this, 'enqueue_styles' ) );
+		add_action( 'integrate_phwa_admin_settings_enqueue_styles', array( $this, 'enqueue_styles' ) );
 
 		// If tab text is not defined, use the title for the tab's text.
 		if ( empty( $this->tab_text ) ) {
@@ -155,7 +155,7 @@ class PostHog_Admin_Section_General {
 		 * @param   array                $fields     Fields.
 		 * @param   PostHog_Settings     $settings   Settings class.
 		 */
-		$fields = apply_filters( 'posthog_admin_section_general_register_fields', $fields, $this->settings ); // @phpstan-ignore-line
+		$fields = apply_filters( 'integrate_phwa_admin_section_general_register_fields', $fields, $this->settings ); // @phpstan-ignore-line
 
 		// Add settings fields.
 		foreach ( $fields as $id => $field ) {

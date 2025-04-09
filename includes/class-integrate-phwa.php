@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package PostHog
  * @author WP Zinc
  */
-class PostHog {
+class Integrate_PHWA {
 
 	/**
 	 * Holds the class object.
@@ -65,17 +65,16 @@ class PostHog {
 
 		// Plugin Details.
 		$this->plugin                    = new stdClass();
-		$this->plugin->name              = 'posthog';
+		$this->plugin->name              = 'integrate-posthog-web-analytics';
 		$this->plugin->displayName       = 'Integrate PostHog Web Analytics';
 		$this->plugin->author_name       = 'WP Zinc';
-		$this->plugin->version           = POSTHOG_PLUGIN_VERSION;
-		$this->plugin->buildDate         = POSTHOG_PLUGIN_BUILD_DATE;
-		$this->plugin->folder            = POSTHOG_PLUGIN_PATH;
-		$this->plugin->url               = POSTHOG_PLUGIN_URL;
+		$this->plugin->version           = INTEGRATE_PHWA_PLUGIN_VERSION;
+		$this->plugin->buildDate         = INTEGRATE_PHWA_PLUGIN_BUILD_DATE;
+		$this->plugin->folder            = INTEGRATE_PHWA_PLUGIN_PATH;
+		$this->plugin->url               = INTEGRATE_PHWA_PLUGIN_URL;
 		$this->plugin->documentation_url = 'https://www.wpzinc.com/documentation/posthog';
 		$this->plugin->support_url       = 'https://www.wpzinc.com/support';
-		$this->plugin->logo              = POSTHOG_PLUGIN_URL . 'assets/images/icons/logo.svg';
-		$this->plugin->review_name       = false;
+		$this->plugin->logo              = INTEGRATE_PHWA_PLUGIN_URL . 'assets/images/icons/logo.svg';
 
 		// Dashboard Submodule.
 		if ( ! class_exists( 'WPZincDashboardWidget' ) ) {
@@ -87,7 +86,7 @@ class PostHog {
 		add_action( 'init', array( $this, 'initialize' ), 1 );
 
 		// Admin Menus.
-		add_action( 'posthog_admin_settings_add_settings_page', array( $this, 'admin_menu' ) );
+		add_action( 'integrate_phwa_admin_settings_add_settings_page', array( $this, 'admin_menu' ) );
 
 	}
 
@@ -134,14 +133,14 @@ class PostHog {
 			return;
 		}
 
-		$this->classes['admin_settings'] = new PostHog_Admin_Settings();
+		$this->classes['admin_settings'] = new Integrate_PHWA_Admin_Settings();
 
 		/**
 		 * Initialize integration classes for the WordPress Administration interface.
 		 *
 		 * @since   1.0.0
 		 */
-		do_action( 'posthog_initialize_admin' );
+		do_action( 'integrate_phwa_initialize_admin' );
 
 	}
 
@@ -153,14 +152,14 @@ class PostHog {
 	 */
 	private function initialize_global() {
 
-		$this->classes['output'] = new PostHog_Output();
+		$this->classes['output'] = new Integrate_PHWA_Output();
 
 		/**
 		 * Initialize integration classes for the frontend web site.
 		 *
 		 * @since   1.0.0
 		 */
-		do_action( 'posthog_initialize_global' );
+		do_action( 'integrate_phwa_initialize_global' );
 
 	}
 
@@ -179,10 +178,10 @@ class PostHog {
 		if ( ! isset( $this->classes[ $name ] ) ) {
 			// Define the error.
 			$error = new WP_Error(
-				'posthog_get_class',
+				'Integrate_PHWA_get_class',
 				sprintf(
 					/* translators: %1$s: PHP class name */
-					__( 'PostHog Error: Could not load Plugin class <strong>%1$s</strong>', 'integrate-posthog-web-analytics' ),
+					__( 'Integrate PostHog Web Analytics Error: Could not load Plugin class <strong>%1$s</strong>', 'integrate-posthog-web-analytics' ),
 					$name
 				)
 			);
@@ -192,7 +191,7 @@ class PostHog {
 			if ( is_admin() ) {
 				wp_die(
 					esc_attr( $error->get_error_message() ),
-					esc_html__( 'PostHog Error', 'integrate-posthog-web-analytics' ),
+					esc_html__( 'Integrate PostHog Web Analytics Error', 'integrate-posthog-web-analytics' ),
 					array(
 						'back_link' => true,
 					)

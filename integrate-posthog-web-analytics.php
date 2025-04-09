@@ -14,7 +14,7 @@
  * Description: Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site.
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: posthog
+ * Text Domain: integrate-posthog-web-analytics
  */
 
 // Exit if accessed directly.
@@ -31,40 +31,40 @@ if ( defined( 'POSTHOG_PLUGIN_VERSION' ) ) {
 }
 
 // Define Plugin version and build date.
-define( 'POSTHOG_PLUGIN_VERSION', '1.0.0' );
-define( 'POSTHOG_PLUGIN_BUILD_DATE', '2025-03-26 18:00:00' );
+define( 'INTEGRATE_PHWA_PLUGIN_VERSION', '1.0.0' );
+define( 'INTEGRATE_PHWA_PLUGIN_BUILD_DATE', '2025-03-26 18:00:00' );
 
 // Define Plugin paths.
-define( 'POSTHOG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
-define( 'POSTHOG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'POSTHOG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'INTEGRATE_PHWA_PLUGIN_FILE', plugin_basename( __FILE__ ) );
+define( 'INTEGRATE_PHWA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'INTEGRATE_PHWA_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 // Traits.
-require_once POSTHOG_PLUGIN_PATH . 'includes/traits/trait-posthog-admin-section.php';
-require_once POSTHOG_PLUGIN_PATH . 'includes/traits/trait-posthog-admin-section-fields.php';
-require_once POSTHOG_PLUGIN_PATH . 'includes/traits/trait-posthog-settings.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-admin-section.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-admin-section-fields.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-settings.php';
 
 // Admin.
-require_once POSTHOG_PLUGIN_PATH . 'includes/admin/class-posthog-admin-section-general.php';
-require_once POSTHOG_PLUGIN_PATH . 'includes/admin/class-posthog-admin-settings.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/admin/class-integrate-phwa-admin-section-general.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/admin/class-integrate-phwa-admin-settings.php';
 
 // Global.
-require_once POSTHOG_PLUGIN_PATH . 'includes/global/class-posthog-output.php';
-require_once POSTHOG_PLUGIN_PATH . 'includes/global/class-posthog-settings.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-output.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-settings.php';
 
 // Bootstrap.
-require_once POSTHOG_PLUGIN_PATH . 'includes/class-posthog.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/class-integrate-phwa.php';
 
 /**
  * Main function to return Plugin instance.
  *
  * @since   1.0.0
  */
-function posthog() {
+function integrate_phwa() {
 
-	return PostHog::get_instance();
+	return Integrate_PHWA::get_instance();
 
 }
 
 // Finally, initialize the Plugin.
-posthog();
+integrate_phwa();

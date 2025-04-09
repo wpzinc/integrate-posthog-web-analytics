@@ -1,0 +1,149 @@
+# Copyright (C) 2025 WP Zinc
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Integrate PostHog Web Analytics 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/integrate-posthog-web-analytics\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-04-09T07:38:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: integrate-posthog-web-analytics\n"
+
+#. Plugin Name of the plugin
+#: integrate-posthog-web-analytics.php
+#: includes/admin/class-integrate-phwa-admin-settings.php:87
+#: includes/class-integrate-phwa.php:103
+#: includes/class-integrate-phwa.php:104
+msgid "Integrate PostHog Web Analytics"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: integrate-posthog-web-analytics.php
+msgid "http://www.wpzinc.com/documentation/posthog"
+msgstr ""
+
+#. Description of the plugin
+#: integrate-posthog-web-analytics.php
+msgid "Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site."
+msgstr ""
+
+#. Author of the plugin
+#: integrate-posthog-web-analytics.php
+msgid "WP Zinc"
+msgstr ""
+
+#. Author URI of the plugin
+#: integrate-posthog-web-analytics.php
+msgid "http://www.wpzinc.com"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:37
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:38
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:102
+msgid "Project API Key"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:107
+msgid "Copy the Project API Key from the PostHog > Settings > Project, entering it here."
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:111
+msgid "Project ID"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:116
+msgid "Copy the Project ID from the PostHog > Settings > Project, entering it here."
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:120
+msgid "Project region"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:125
+msgid "Define the region where your PostHog data is hosted."
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:133
+msgid "Persistence"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:138
+msgid "Where to store user data. Use `memory` to meet GDPR, HIPAA or other privacy requirements."
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:140
+msgid "Local Storage + Cookie"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:141
+msgid "Cookie"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:142
+msgid "Local Storage"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:143
+msgid "Session Storage"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:144
+msgid "Memory"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:187
+msgid "Enter your Project API Key and Project ID to enable web analytics tracking."
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-settings.php:90
+#: includes/admin/class-integrate-phwa-admin-settings.php:173
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-settings.php:125
+msgid "If you need help setting up the plugin please refer to the"
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-settings.php:127
+msgid "plugin documentation"
+msgstr ""
+
+#. translators: %1$s: PHP class name
+#: includes/class-integrate-phwa.php:184
+msgid "Integrate PostHog Web Analytics Error: Could not load Plugin class <strong>%1$s</strong>"
+msgstr ""
+
+#: includes/class-integrate-phwa.php:194
+msgid "Integrate PostHog Web Analytics Error"
+msgstr ""
+
+#: views/admin/fields/field.php:118
+msgid "No"
+msgstr ""
+
+#: views/admin/fields/field.php:119
+msgid "Yes"
+msgstr ""
+
+#: views/admin/fields/repeater.php:25
+msgid "Actions"
+msgstr ""
+
+#: views/admin/fields/repeater.php:33
+msgid "Add"
+msgstr ""
+
+#: views/admin/fields/repeater.php:53
+msgid "Delete"
+msgstr ""

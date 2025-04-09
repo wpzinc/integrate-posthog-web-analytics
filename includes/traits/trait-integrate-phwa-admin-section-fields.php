@@ -12,7 +12,7 @@
  * @package PostHog
  * @author WP Zinc
  */
-trait PostHog_Admin_Section_Fields_Trait {
+trait Integrate_PHWA_Admin_Section_Fields_Trait {
 
 	/**
 	 * Outputs a text field.

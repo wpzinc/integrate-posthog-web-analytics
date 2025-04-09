@@ -2,12 +2,12 @@
 php create-actions-filters-docs.php
 
 # Generate .pot file
-php -n $(which wp) i18n make-pot ../ ../languages/posthog.pot
+php -n $(which wp) i18n make-pot ../ ../languages/integrate-posthog-web-analytics.pot
 
 # Build ZIP file, excluding non-Plugin files
 cd ..
-rm posthog.zip
-zip -r posthog.zip . \
+rm integrate-posthog-web-analytics.zip
+zip -r integrate-posthog-web-analytics.zip . \
 -x "*.scss" \
 -x "*.git*" \
 -x ".scripts/*" \

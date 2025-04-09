@@ -12,7 +12,7 @@
  * @package PostHog
  * @author WP Zinc
  */
-trait PostHog_Admin_Section_Trait {
+trait Integrate_PHWA_Admin_Section_Trait {
 
 	/**
 	 * Section name
@@ -55,7 +55,7 @@ trait PostHog_Admin_Section_Trait {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @var     false|PostHog_Settings
+	 * @var     false|Integrate_PHWA_Settings
 	 */
 	public $settings;
 
@@ -94,7 +94,7 @@ trait PostHog_Admin_Section_Trait {
 		if ( ! array_key_exists( 'page', $_REQUEST ) ) {
 			return false;
 		}
-		if ( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) !== '_posthog_settings' ) {
+		if ( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) !== '_Integrate_PHWA_settings' ) {
 			return false;
 		}
 
@@ -160,7 +160,7 @@ trait PostHog_Admin_Section_Trait {
 		 *
 		 * @since   1.0.0
 		 */
-		do_action( 'posthog_settings_base_render_before' );
+		do_action( 'integrate_phwa_settings_base_render_before' );
 
 		do_settings_sections( $this->settings_key );
 
@@ -175,7 +175,7 @@ trait PostHog_Admin_Section_Trait {
 		 *
 		 * @since   1.0.0
 		 */
-		do_action( 'posthog_settings_base_render_after' );
+		do_action( 'integrate_phwa_settings_base_render_after' );
 
 	}
 
@@ -223,7 +223,7 @@ trait PostHog_Admin_Section_Trait {
 		 *
 		 * @since   1.0.0
 		 */
-		do_action( 'posthog_settings_base_sanitize_settings', $this->name, $updated_settings );
+		do_action( 'integrate_phwa_settings_base_sanitize_settings', $this->name, $updated_settings );
 
 		// Return settings to be saved.
 		return $updated_settings;

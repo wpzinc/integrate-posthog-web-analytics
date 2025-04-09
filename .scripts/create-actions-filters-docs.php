@@ -13,7 +13,7 @@ $filter_docs = $read_actions_filters->run(
     true, // Extract filters.
     false, // Extract actions.
     'markdown', // Return as HTML/markdown compatible with GitHub.
-    '\'posthog_', // Only build Docs for actions starting with posthog_.
+    '\'integrate_phwa_', // Only build Docs for actions starting with integrate_phwa_.
     false, // Change prefix.
     true // Return by file.
 );
@@ -27,7 +27,7 @@ $action_docs = $read_actions_filters->run(
     false, // Extract filters.
     true, // Extract actions.
     'markdown', // Return as HTML/markdown compatible with GitHub.
-    '\'posthog_', // Only build Docs for actions starting with posthog_.
+    '\'integrate_phwa_', // Only build Docs for actions starting with integrate_phwa_.
     false, // Change prefix.
     true // Return by file.
 );

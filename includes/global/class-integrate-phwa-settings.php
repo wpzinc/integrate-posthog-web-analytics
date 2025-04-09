@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package PostHog
  * @author WP Zinc
  */
-class PostHog_Settings {
+class Integrate_PHWA_Settings {
 
-	use PostHog_Settings_Trait;
+	use Integrate_PHWA_Settings_Trait;
 
 	/**
 	 * Holds the Settings Key that stores Plugin settings
@@ -28,7 +28,7 @@ class PostHog_Settings {
 	 *
 	 * @var     string
 	 */
-	const SETTINGS_NAME = '_posthog_settings';
+	const SETTINGS_NAME = '_Integrate_PHWA_settings';
 
 	/**
 	 * Constructor. Reads settings from options table, falling back to defaults
@@ -146,7 +146,7 @@ class PostHog_Settings {
 		 *
 		 * @param   array   $defaults   Default Settings.
 		 */
-		$defaults = apply_filters( 'posthog_settings_get_defaults', $defaults );
+		$defaults = apply_filters( 'integrate_phwa_settings_get_defaults', $defaults );
 
 		return $defaults;
 

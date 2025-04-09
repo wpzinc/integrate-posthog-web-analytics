@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package PostHog
  * @author WP Zinc
  */
-class PostHog_Admin_Settings {
+class Integrate_PHWA_Admin_Settings {
 
 	/**
 	 * Settings sections
@@ -30,20 +30,13 @@ class PostHog_Admin_Settings {
 	public $sections = array();
 
 	/**
-	 * Holds the Settings Page Slug
-	 *
-	 * @var     string
-	 */
-	const SETTINGS_PAGE_SLUG = 'posthog-settings';
-
-	/**
 	 * Constructor
 	 */
 	public function __construct() {
 
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
 		add_action( 'admin_init', array( $this, 'register_sections' ) );
-		add_filter( 'plugin_action_links_' . POSTHOG_PLUGIN_FILE, array( $this, 'add_settings_page_link' ) );
+		add_filter( 'plugin_action_links_' . INTEGRATE_PHWA_PLUGIN_FILE, array( $this, 'add_settings_page_link' ) );
 
 	}
 
@@ -66,7 +59,7 @@ class PostHog_Admin_Settings {
 		 * @param   string  $capability     Minimum Required Capability.
 		 * @return  string                  Minimum Required Capability
 		 */
-		$minimum_capability = apply_filters( 'posthog_admin_settings_minimum_capability', $minimum_capability );
+		$minimum_capability = apply_filters( 'integrate_phwa_admin_settings_minimum_capability', $minimum_capability );
 
 		/**
 		 * Add settings menus and sub menus for the Plugin's settings.
@@ -75,7 +68,7 @@ class PostHog_Admin_Settings {
 		 *
 		 * @param   string  $minimum_capability     Minimum capability required.
 		 */
-		do_action( 'posthog_admin_settings_add_settings_page', $minimum_capability );
+		do_action( 'integrate_phwa_admin_settings_add_settings_page', $minimum_capability );
 
 	}
 
@@ -89,7 +82,7 @@ class PostHog_Admin_Settings {
 		$active_section = $this->get_active_section();
 		?>
 
-		<header style="--wpzinc-logo: url('<?php echo esc_attr( POSTHOG_PLUGIN_URL ); // @phpstan-ignore-line ?>assets/images/icons/logo.svg')">
+		<header style="--wpzinc-logo: url('<?php echo esc_attr( INTEGRATE_PHWA_PLUGIN_URL ); // @phpstan-ignore-line ?>assets/images/icons/logo.svg')">
 			<h1>
 				<?php echo esc_html_e( 'Integrate PostHog Web Analytics', 'integrate-posthog-web-analytics' ); ?>
 
@@ -173,9 +166,9 @@ class PostHog_Admin_Settings {
 			'<a href="%s">%s</a>',
 			add_query_arg(
 				array(
-					'page' => self::SETTINGS_PAGE_SLUG,
+					'page' => 'integrate-posthog-web-analytics',
 				),
-				admin_url( 'admin.php' )
+				admin_url( 'options-general.php' )
 			),
 			__( 'Settings', 'integrate-posthog-web-analytics' )
 		);
@@ -187,7 +180,7 @@ class PostHog_Admin_Settings {
 		 *
 		 * @param   array   $links  HTML Links.
 		 */
-		$links = apply_filters( 'posthog_plugin_screen_action_links', $links );
+		$links = apply_filters( 'integrate_phwa_plugin_screen_action_links', $links );
 
 		// Return.
 		return $links;
@@ -212,7 +205,7 @@ class PostHog_Admin_Settings {
 					esc_url(
 						add_query_arg(
 							array(
-								'page' => self::SETTINGS_PAGE_SLUG,
+								'page' => 'integrate-posthog-web-analytics',
 								'tab'  => $section->name,
 							),
 							admin_url( 'admin.php' )
@@ -239,7 +232,7 @@ class PostHog_Admin_Settings {
 
 		// Register the General settings sections.
 		$sections = array(
-			'general' => new PostHog_Admin_Section_General(),
+			'general' => new Integrate_PHWA_Admin_Section_General(),
 		);
 
 		/**
@@ -249,7 +242,7 @@ class PostHog_Admin_Settings {
 		 *
 		 * @param   array   $sections   Array of settings classes that handle individual tabs e.g. General, Tools etc.
 		 */
-		$sections = apply_filters( 'posthog_admin_settings_register_sections', $sections );
+		$sections = apply_filters( 'integrate_phwa_admin_settings_register_sections', $sections );
 
 		// With our sections now registered, assign them to this class.
 		$this->sections = $sections;
@@ -281,7 +274,7 @@ class PostHog_Admin_Settings {
 			array(
 				'utm_source'  => 'wordpress',
 				'utm_term'    => get_locale(),
-				'utm_content' => 'posthog',
+				'utm_content' => 'integrate-phwa',
 			),
 			$this->sections[ $active_section ]->documentation_url()
 		);

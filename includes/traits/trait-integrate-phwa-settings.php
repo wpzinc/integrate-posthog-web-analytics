@@ -12,7 +12,7 @@
  * @package PostHog
  * @author WP Zinc
  */
-trait PostHog_Settings_Trait {
+trait Integrate_PHWA_Settings_Trait {
 
 	/**
 	 * Holds the Settings
