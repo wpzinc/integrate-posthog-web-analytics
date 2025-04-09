@@ -21,7 +21,7 @@ Unofficial Plugin to integrate PostHog's web analytics tracking script to your W
 * View detailed analytics reports and dashboards
 * Make data-driven decisions to optimize your site
 
-[youtube https://www.youtube.com/watch?v=vw7eIBSNwl8]
+[youtube https://www.youtube.com/watch?v=TZnSXIQeSc0]
 
 For those needing to meet GDPR, HIPAA or other privacy requirements, the plugin can be set in a cookieless mode.
 
