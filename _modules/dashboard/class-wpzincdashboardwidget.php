@@ -85,16 +85,6 @@ class WPZincDashboardWidget {
 			$this->plugin->name,
 		);
 
-		/**
-		 * Filter the body classes to output on the <body> tag.
-		 *
-		 * @since   1.0.0
-		 *
-		 * @param   array   $screens        Screens.
-		 * @param   array   $classes        Classes.
-		 */
-		$screens = apply_filters( 'wpzinc_admin_body_class', $screens, $classes );
-
 		// Determine whether we're on a Plugin Screen.
 		$is_plugin_screen = $this->is_plugin_screen( $screens );
 
