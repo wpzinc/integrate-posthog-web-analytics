@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-09T07:57:12+00:00\n"
+"POT-Creation-Date: 2025-04-09T10:53:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: integrate-posthog-web-analytics\n"
@@ -17,8 +17,8 @@ msgstr ""
 #. Plugin Name of the plugin
 #: integrate-posthog-web-analytics.php
 #: includes/admin/class-integrate-phwa-admin-settings.php:87
-#: includes/class-integrate-phwa.php:103
-#: includes/class-integrate-phwa.php:104
+#: includes/class-integrate-phwa.php:109
+#: includes/class-integrate-phwa.php:110
 msgid "Integrate PostHog Web Analytics"
 msgstr ""
 
@@ -119,12 +119,17 @@ msgstr ""
 msgid "plugin documentation"
 msgstr ""
 
+#. translators: Plugin Name
+#: includes/class-integrate-phwa.php:81
+msgid "Thanks for using %s to track your web analytics!"
+msgstr ""
+
 #. translators: %1$s: PHP class name
-#: includes/class-integrate-phwa.php:184
+#: includes/class-integrate-phwa.php:190
 msgid "Integrate PostHog Web Analytics Error: Could not load Plugin class <strong>%1$s</strong>"
 msgstr ""
 
-#: includes/class-integrate-phwa.php:194
+#: includes/class-integrate-phwa.php:200
 msgid "Integrate PostHog Web Analytics Error"
 msgstr ""
 

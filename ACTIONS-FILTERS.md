@@ -339,7 +339,7 @@ add_action( 'integrate_phwa_admin_settings_add_settings_page', function( $minimu
 </pre>
 <h3 id="integrate_phwa_initialize_admin">
 						integrate_phwa_initialize_admin
-						<code>includes/class-integrate-phwa.php::142</code>
+						<code>includes/class-integrate-phwa.php::148</code>
 					</h3><h4>Parameters</h4>
 					<table>
 						<thead>
@@ -359,7 +359,7 @@ add_action( 'integrate_phwa_initialize_admin', function(  ) {
 </pre>
 <h3 id="integrate_phwa_initialize_global">
 						integrate_phwa_initialize_global
-						<code>includes/class-integrate-phwa.php::161</code>
+						<code>includes/class-integrate-phwa.php::167</code>
 					</h3><h4>Parameters</h4>
 					<table>
 						<thead>
