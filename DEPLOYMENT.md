@@ -12,15 +12,15 @@ On your local machine, switch to the `master` branch.
 
 Run the `.scripts/build.sh` script, which will:
 
-- Generate the `languages/posthog.pot` file
+- Generate the `languages/integrate-posthog-web-analytics.pot` file
 - Generate the [ACTIONS-FILTERS.md](ACTIONS-FILTERS.md) file
 
 ## Update the Plugin's Version Number
 
 We follow [Semantic Versioning](https://semver.org/).
 
-- In `posthog.php`, change the Version header to the new version number.
-- In `posthog.php`, change the `PLUGIN_VERSION` constant to the new version number.
+- In `integrate-posthog-web-analytics.php`, change the Version header to the new version number.
+- In `integrate-posthog-web-analytics.php`, change the `PLUGIN_VERSION` constant to the new version number.
 
 ## Update the Plugin's readme.txt Changelog
 
@@ -41,14 +41,14 @@ Each line in the changelog should start with `Added` or `Fix`.
 
 Commit the updated files, which should comprise of:
 
-- `languages/posthog.pot`
+- `languages/integrate-posthog-web-analytics.pot`
 - `readme.txt`
-- `posthog.php`
+- `integrate-posthog-web-analytics.php`
 - `ACTIONS-FILTERS.md`
 
 ## Create a New Release
 
-[Create a New Release](https://github.com/n7studios/posthog/releases/new), completing the following:
+[Create a New Release](https://github.com/n7studios/integrate-posthog-web-analytics/releases/new), completing the following:
 
 - Choose a tag: Click this button and enter the new version number (e.g. `1.9.6`)
 - Release title: The version number (e.g. `1.9.6`)
@@ -62,4 +62,4 @@ When you're happy with the above, click `Publish Release`.
 
 This will then trigger the [deploy.yml](.github/workflows/deploy.yml) workflow, which will upload this new version to the wordpress.org repository.
 
-The release will also be available to view on the [Releases](https://github.com/n7studios/posthog/releases) section of this GitHub repository.
+The release will also be available to view on the [Releases](https://github.com/n7studios/integrate-posthog-web-analytics/releases) section of this GitHub repository.
