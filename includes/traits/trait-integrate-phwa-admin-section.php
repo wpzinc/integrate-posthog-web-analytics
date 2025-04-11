@@ -6,6 +6,11 @@
  * @author WP Zinc
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * PostHog settings section trait class.
  *
