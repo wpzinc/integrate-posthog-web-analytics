@@ -53,6 +53,10 @@ require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-output.php';
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-settings.php';
 
+// Integrations.
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/integrations/woocommerce/class-integrate-phwa-woocommerce.php';
+
 // Bootstrap.
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/class-integrate-phwa.php';
 

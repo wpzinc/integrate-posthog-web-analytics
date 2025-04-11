@@ -28,7 +28,7 @@ class Integrate_PHWA_Settings {
 	 *
 	 * @var     string
 	 */
-	const SETTINGS_NAME = '_Integrate_PHWA_settings';
+	const SETTINGS_NAME = '_integrate_phwa_settings';
 
 	/**
 	 * Constructor. Reads settings from options table, falling back to defaults

@@ -71,6 +71,12 @@ class Integrate_PHWA_API {
      */
     public function capture_event( $event_name, $properties = array() ) {
 
+        // If the user is logged in, add the user ID to the properties.
+        if ( is_user_logged_in() ) {
+            $properties['user_id'] = get_current_user_id();
+        }
+
+        // Store event.
         $this->events[] = array(
             'event' => $event_name,
             'properties' => $properties,
@@ -84,7 +90,12 @@ class Integrate_PHWA_API {
      *
      * @since   1.1.0
      */
-    public function batch_capture() {
+    public function send_events() {
+
+        var_dump( $this->events );
+        die();
+
+        error_log( print_r( $this->events, true ) );
 
         // Bail if no events to send.
         if ( empty( $this->events ) ) {
