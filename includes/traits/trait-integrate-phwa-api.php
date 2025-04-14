@@ -1,6 +1,6 @@
 <?php
 /**
- * PostHog API class.
+ * PostHog API trait.
  *
  * @package PostHog
  * @author WP Zinc
@@ -17,16 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package PostHog
  * @author WP Zinc
  */
-class Integrate_PHWA_API {
-
-	/**
-	 * Holds the API endpoint
-	 *
-	 * @since   1.1.0
-	 *
-	 * @var     string
-	 */
-	public $api_endpoint;
+trait Integrate_PHWA_API_Trait {
 
 	/**
 	 * Holds the user's API key
@@ -38,6 +29,15 @@ class Integrate_PHWA_API {
 	public $api_key;
 
 	/**
+	 * Holds the cloud country
+	 *
+	 * @since   1.1.0
+	 *
+	 * @var     string
+	 */
+	public $cloud_country;
+
+	/**
 	 * Holds the events to send to PostHog using the /batch endpoint.
 	 *
 	 * @since   1.1.0
@@ -45,22 +45,6 @@ class Integrate_PHWA_API {
 	 * @var     array
 	 */
 	public $events = array();
-
-	/**
-	 * Constructor
-	 *
-	 * @since   1.1.0
-	 *
-	 * @param   string $api_key         API Key.
-	 * @param   string $cloud_country   Cloud Country.
-	 */
-	public function __construct( $api_key, $cloud_country = 'us' ) {
-
-		// Define API Key and endpoint.
-		$this->api_key      = $api_key;
-		$this->api_endpoint = 'https://' . $cloud_country . '.i.posthog.com/';
-
-	}
 
 	/**
 	 * Add an event to the batch for sending when later calling batch_capture().
@@ -74,7 +58,7 @@ class Integrate_PHWA_API {
 
 		// If the user is logged in, add the user ID to the properties.
 		if ( is_user_logged_in() ) {
-			$properties['user_id'] = get_current_user_id();
+			$properties['distinct_id'] = get_current_user_id();
 		}
 
 		// Store event.
@@ -98,15 +82,11 @@ class Integrate_PHWA_API {
 			return;
 		}
 
-		error_log( print_r( $this->events, true ) );
-		return;
-
 		// Send events to PostHog.
 		$this->post(
 			'batch',
 			array(
-				'historical_migration' => false,
-				'events'               => $this->events,
+				'batch' => $this->events,
 			)
 		);
 
@@ -196,8 +176,11 @@ class Integrate_PHWA_API {
 	 */
 	private function request( $cmd, $method = 'get', $params = array() ) {
 
-		// Add API Key to params.
+		// Define API Key.
 		$params['api_key'] = $this->api_key;
+
+		// Define endpoint.
+		$endpoint = 'https://' . $this->cloud_country . '.i.posthog.com/';
 
 		// Send request.
 		switch ( $method ) {
@@ -206,11 +189,12 @@ class Integrate_PHWA_API {
 			 */
 			case 'post':
 				$result = wp_remote_post(
-					$this->api_endpoint . $cmd,
+					$endpoint . $cmd,
 					array(
-						'headers' => $this->get_headers(),
-						'body'    => wp_json_encode( $params ),
-						'timeout' => $this->get_timeout(),
+						'headers'  => $this->get_headers(),
+						'body'     => wp_json_encode( $params ),
+						'timeout'  => $this->get_timeout(),
+						'blocking' => false,
 					)
 				);
 				break;
@@ -220,12 +204,13 @@ class Integrate_PHWA_API {
 			 */
 			case 'put':
 				$result = wp_remote_post(
-					$this->api_endpoint . $cmd,
+					$endpoint . $cmd,
 					array(
-						'method'  => 'PUT',
-						'headers' => $this->get_headers(),
-						'body'    => wp_json_encode( $params ),
-						'timeout' => $this->get_timeout(),
+						'method'   => 'PUT',
+						'headers'  => $this->get_headers(),
+						'body'     => wp_json_encode( $params ),
+						'timeout'  => $this->get_timeout(),
+						'blocking' => false,
 					)
 				);
 				break;
@@ -236,7 +221,7 @@ class Integrate_PHWA_API {
 			case 'get':
 			default:
 				$result = wp_remote_get(
-					$this->api_endpoint . $cmd,
+					$endpoint . $cmd,
 					array(
 						'headers' => $this->get_headers(),
 						'body'    => ( $params !== false ? $params : '' ),

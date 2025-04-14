@@ -42,6 +42,7 @@ define( 'INTEGRATE_PHWA_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 // Traits.
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-admin-section.php';
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-admin-section-fields.php';
+require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-api.php';
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/traits/trait-integrate-phwa-settings.php';
 
 // Admin.
@@ -49,7 +50,6 @@ require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/admin/class-integrate-phwa-a
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/admin/class-integrate-phwa-admin-settings.php';
 
 // Global.
-require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-api.php';
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-output.php';
 require_once INTEGRATE_PHWA_PLUGIN_PATH . 'includes/global/class-integrate-phwa-settings.php';
 

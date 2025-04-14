@@ -42,7 +42,7 @@ class Integrate_PHWA_Admin_Section_WooCommerce {
 
 		// Define fields.
 		$this->fields = array(
-			'event_view_product'         => array(
+			'event_view_product'       => array(
 				'title'   => __( 'Event: View Product', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -51,7 +51,7 @@ class Integrate_PHWA_Admin_Section_WooCommerce {
 					'description' => esc_html__( 'If enabled, tracks viewing a product.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'event_add_to_cart'          => array(
+			'event_add_to_cart'        => array(
 				'title'   => __( 'Event: Add to Cart', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -60,7 +60,7 @@ class Integrate_PHWA_Admin_Section_WooCommerce {
 					'description' => esc_html__( 'If enabled, tracks adding a product to the cart.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'event_update_cart'          => array(
+			'event_update_cart'        => array(
 				'title'   => __( 'Event: Update Cart', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -69,7 +69,7 @@ class Integrate_PHWA_Admin_Section_WooCommerce {
 					'description' => esc_html__( 'If enabled, tracks updating the cart.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'event_view_cart'            => array(
+			'event_view_cart'          => array(
 				'title'   => __( 'Event: View Cart', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -78,30 +78,21 @@ class Integrate_PHWA_Admin_Section_WooCommerce {
 					'description' => esc_html__( 'If enabled, tracks viewing the cart.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'event_checkout_started'     => array(
+			'event_view_checkout'      => array(
 				'title'   => __( 'Event: Checkout Started', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
 					'type'        => 'checkbox',
-					'value'       => $this->settings->event_checkout_started(),
-					'description' => esc_html__( 'If enabled, tracks the checkout started event.', 'integrate-posthog-web-analytics' ),
+					'value'       => $this->settings->event_view_checkout(),
+					'description' => esc_html__( 'If enabled, tracks the view checkout event.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'event_checkout_in_progress' => array(
-				'title'   => __( 'Event: Checkout In Progress', 'integrate-posthog-web-analytics' ),
-				'section' => $this->name,
-				'props'   => array(
-					'type'        => 'checkbox',
-					'value'       => $this->settings->event_checkout_in_progress(),
-					'description' => esc_html__( 'If enabled, tracks the checkout in progress event.', 'integrate-posthog-web-analytics' ),
-				),
-			),
-			'event_checkout_completed'   => array(
+			'event_completed_checkout' => array(
 				'title'   => __( 'Event: Checkout Completed', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
 					'type'        => 'checkbox',
-					'value'       => $this->settings->event_checkout_completed(),
+					'value'       => $this->settings->event_completed_checkout(),
 					'description' => esc_html__( 'If enabled, tracks the checkout completed event.', 'integrate-posthog-web-analytics' ),
 				),
 			),

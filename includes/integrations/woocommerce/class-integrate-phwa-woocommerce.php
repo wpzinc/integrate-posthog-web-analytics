@@ -17,7 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package PostHog
  * @author WP Zinc
  */
-class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
+class Integrate_PHWA_WooCommerce {
+
+	use Integrate_PHWA_API_Trait;
 
 	/**
 	 * Constructor. Defines the actions to track events on.
@@ -31,8 +33,18 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 			return;
 		}
 
-		// Get settings instance.
-		$settings = new Integrate_PHWA_Settings_WooCommerce();
+		// Get settings instances.
+		$plugin_settings = new Integrate_PHWA_Settings();
+		$settings        = new Integrate_PHWA_Settings_WooCommerce();
+
+		// Bail if the Plugin is not enabled.
+		if ( ! $plugin_settings->enabled() ) {
+			return;
+		}
+
+		// Define API Key and Cloud Country.
+		$this->api_key       = $plugin_settings->project_api_key();
+		$this->cloud_country = $plugin_settings->project_region();
 
 		// Register actions to track events.
 		if ( $settings->event_view_product() ) {
@@ -47,14 +59,11 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 		if ( $settings->event_view_cart() ) {
 			add_action( 'woocommerce_before_cart', array( $this, 'view_cart' ) );
 		}
-		if ( $settings->event_checkout_started() ) {
-			add_action( 'woocommerce_before_checkout_form', array( $this, 'track_checkout_started' ) );
+		if ( $settings->event_view_checkout() ) {
+			add_action( 'woocommerce_before_checkout_form', array( $this, 'view_checkout' ) );
 		}
-		if ( $settings->event_checkout_in_progress() ) {
-			add_action( 'woocommerce_checkout_update_order_review', array( $this, 'track_checkout_in_progress' ) );
-		}
-		if ( $settings->event_checkout_completed() ) {
-			add_action( 'woocommerce_thankyou', array( $this, 'track_checkout_completed' ), 10, 1 );
+		if ( $settings->event_completed_checkout() ) {
+			add_action( 'woocommerce_thankyou', array( $this, 'completed_checkout' ), 10, 1 );
 		}
 
 		// Send events on shutdown.
@@ -82,42 +91,6 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 	}
 
 	/**
-	 * Capture event when a product list is viewed.
-	 *
-	 * @since   1.1.0
-	 */
-	public function view_product_list() {
-
-		$queried_object = get_queried_object();
-		$properties     = array(
-			'list_name' => is_product_category() ? 'Category: ' . $queried_object->name : 'Shop',
-			'products'  => array(),
-		);
-
-		$products = wc_get_products(
-			array(
-				'status'   => 'publish',
-				'limit'    => -1,
-				'category' => is_product_category() ? array( $queried_object->slug ) : array(),
-			)
-		);
-
-		foreach ( $products as $product ) {
-			$properties['products'][] = array(
-				'product_id'         => $product->get_id(),
-				'product_name'       => $product->get_name(),
-				'product_price'      => $product->get_price(),
-				'product_sku'        => $product->get_sku(),
-				'product_categories' => wp_list_pluck( get_the_terms( $product->get_id(), 'product_cat' ), 'name' ),
-				'product_tags'       => wp_list_pluck( get_the_terms( $product->get_id(), 'product_tag' ), 'name' ),
-			);
-		}
-
-		$this->capture_event( 'view_product_list', $properties );
-
-	}
-
-	/**
 	 * Capture event when a product is added to the cart.
 	 *
 	 * @since   1.1.0
@@ -129,10 +102,10 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 	 * @param array   $variation Array of variation data.
 	 * @param array   $cart_item_data Array of other cart item data.
 	 */
-	public function add_to_cart( $cart_id, $product_id, $request_quantity, $variation_id, $variation, $cart_item_data ) {
+	public function add_to_cart( $cart_id, $product_id, $request_quantity, $variation_id, $variation, $cart_item_data ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 
 		// Get WooCommerce Product.
-		$product    = wc_get_product( $product_id );
+		$product = wc_get_product( $product_id );
 
 		// Bail if product does not exist.
 		if ( ! $product ) {
@@ -140,7 +113,7 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 		}
 
 		// Capture event.
-		$this->capture_event( 'add_to_cart', $this->get_product_data( $product ) );
+		$this->capture_event( 'add_to_cart', $this->get_product_data( $product, $variation_id, $request_quantity ) );
 
 	}
 
@@ -148,9 +121,9 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 	 * Capture event when the cart is updated.
 	 *
 	 * @since   1.1.0
-	 * 
-	 * @param 	string 	$type 	Notification type.
-	 * @return 	string 			Notification type
+	 *
+	 * @param   string $type   Notification type.
+	 * @return  string          Notification type
 	 */
 	public function update_cart( $type ) {
 
@@ -172,24 +145,13 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 	}
 
 	/**
-	 * Capture event when the checkout is started.
+	 * Capture event when the checkout is viewed.
 	 *
 	 * @since   1.1.0
 	 */
-	public function track_checkout_started() {
+	public function view_checkout() {
 
-		$this->capture_event( 'checkout_initiated', $this->get_cart_data() );
-
-	}
-
-	/**
-	 * Capture event when the checkout is in progress.
-	 *
-	 * @since   1.1.0
-	 */
-	public function track_checkout_in_progress() {
-
-		$this->capture_event( 'checkout_in_progress', $this->get_cart_data() );
+		$this->capture_event( 'checkout_view', $this->get_cart_data() );
 
 	}
 
@@ -200,7 +162,7 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 	 *
 	 * @param integer $order_id ID of the order.
 	 */
-	public function track_checkout_completed( $order_id ) {
+	public function completed_checkout( $order_id ) {
 
 		// Get order.
 		$order = wc_get_order( $order_id );
@@ -210,10 +172,10 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 		}
 
 		// Get products.
-		$items = $order->get_items();
+		$items    = $order->get_items();
 		$products = array();
 		foreach ( $items as $item ) {
-			$products[] = $this->get_product_data( $item->get_product() );
+			$products[] = $this->get_product_data( $item->get_product(), $item->get_variation_id(), $item->get_quantity() );
 		}
 
 		// Build properties.
@@ -225,10 +187,10 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 			'payment_method'  => $order->get_payment_method(),
 			'shipping_method' => $order->get_shipping_method(),
 			'coupon_codes'    => $order->get_coupon_codes(),
-			'products'        => $product_data,
+			'products'        => $products,
 		);
 
-		$this->capture_event( 'order_completed', $properties );
+		$this->capture_event( 'checkout_completed', $properties );
 
 	}
 
@@ -242,13 +204,13 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 	private function get_cart_data() {
 
 		// Get cart.
-		$cart         = WC()->cart;
-		$cart_items   = $cart->get_cart();
-		$products 	  = array();
+		$cart       = WC()->cart;
+		$cart_items = $cart->get_cart();
+		$products   = array();
 
 		// Get product data for each item in cart.
 		foreach ( $cart_items as $cart_item_key => $cart_item ) {
-			$products[] = $this->get_product_data( $cart_item['data'] );
+			$products[] = $this->get_product_data( $cart_item['data'], $cart_item['variation_id'], $cart_item['quantity'] );
 		}
 
 		return array(
@@ -257,38 +219,42 @@ class Integrate_PHWA_WooCommerce extends Integrate_PHWA_API {
 			'currency'      => get_woocommerce_currency(),
 			'quantity'      => $cart->get_cart_contents_count(),
 			'coupon_codes'  => $cart->get_applied_coupons(),
-			'products'      => $product_data,
+			'products'      => $products,
 		);
 
 	}
 
 	/**
 	 * Helper method to fetch WooCommerce Product data.
-	 * 
+	 *
 	 * @since   1.1.0
-	 * 
-	 * @param 	WC_Product 	$product 	WooCommerce Product object.
-	 * @return 	array 					Product data.
+	 *
+	 * @param   WC_Product $product      WooCommerce Product object.
+	 * @param   integer    $variation_id Variation ID.
+	 * @param   integer    $quantity     Quantity.
+	 * @return  array                    Product data.
 	 */
-	private function get_product_data( $product ) {
+	private function get_product_data( $product, $variation_id = false, $quantity = 1 ) {
 
 		// Build properties.
 		$properties = array(
-			'id'    	=> $product_id,
-			'name'  	=> $product->get_name(),
-			'sku'       => $product->get_sku(),
-			'price' 	=> $product->get_price(),
-			'quantity' 	=> $request_quantity,
+			'id'       => $product->get_id(),
+			'name'     => $product->get_name(),
+			'sku'      => $product->get_sku(),
+			'price'    => $product->get_price(),
+			'quantity' => $quantity,
 		);
 
 		// If a variation was added to the cart, add the variation ID and attributes.
 		if ( $variation_id ) {
 			$properties['product_variation_id']         = $variation_id;
-			$variation_product                  		= wc_get_product( $variation_id );
+			$variation_product                          = wc_get_product( $variation_id );
 			$properties['product_variation_sku']        = $variation_product->get_sku();
 			$properties['product_variation_attributes'] = $variation_product->get_variation_attributes();
 		}
-		
+
+		return $properties;
+
 	}
 
 }

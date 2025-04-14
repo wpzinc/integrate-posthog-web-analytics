@@ -109,22 +109,9 @@ class Integrate_PHWA_Settings_WooCommerce {
 	 *
 	 * @return  bool
 	 */
-	public function event_checkout_started() {
+	public function event_view_checkout() {
 
-		return $this->event( 'checkout_started' );
-
-	}
-
-	/**
-	 * Returns the event checkout in progress setting.
-	 *
-	 * @since   1.1.0
-	 *
-	 * @return  bool
-	 */
-	public function event_checkout_in_progress() {
-
-		return $this->event( 'checkout_in_progress' );
+		return $this->event( 'view_checkout' );
 
 	}
 
@@ -135,9 +122,9 @@ class Integrate_PHWA_Settings_WooCommerce {
 	 *
 	 * @return  bool
 	 */
-	public function event_checkout_completed() {
+	public function event_completed_checkout() {
 
-		return $this->event( 'checkout_completed' );
+		return $this->event( 'completed_checkout' );
 
 	}
 
@@ -166,13 +153,12 @@ class Integrate_PHWA_Settings_WooCommerce {
 	public function get_defaults() {
 
 		$defaults = array(
-			'event_view_product'         => false,
-			'event_add_to_cart'          => false,
-			'event_update_cart'          => false,
-			'event_view_cart'            => false,
-			'event_checkout_started'     => false,
-			'event_checkout_in_progress' => false,
-			'event_checkout_completed'   => false,
+			'event_view_product'       => false,
+			'event_add_to_cart'        => false,
+			'event_update_cart'        => false,
+			'event_view_cart'          => false,
+			'event_view_checkout'      => false,
+			'event_completed_checkout' => false,
 		);
 
 		/**
