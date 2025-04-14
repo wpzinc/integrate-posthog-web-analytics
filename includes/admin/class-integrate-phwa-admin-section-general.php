@@ -33,12 +33,12 @@ class Integrate_PHWA_Admin_Section_General {
 		$this->settings = new Integrate_PHWA_Settings();
 
 		// Define the programmatic name, title, tab and settings key.
-		$this->name         = 'general';
-		$this->title        = __( 'General Settings', 'integrate-posthog-web-analytics' );
-		$this->description  = __( 'Enter your Project API Key and Project ID to enable web analytics tracking.', 'integrate-posthog-web-analytics' );
-		$this->tab_text     = __( 'General', 'integrate-posthog-web-analytics' );
+		$this->name              = 'general';
+		$this->title             = __( 'General Settings', 'integrate-posthog-web-analytics' );
+		$this->description       = __( 'Enter your Project API Key and Project ID to enable web analytics tracking.', 'integrate-posthog-web-analytics' );
+		$this->tab_text          = __( 'General', 'integrate-posthog-web-analytics' );
 		$this->documentation_url = 'https://www.wpzinc.com/documentation/posthog';
-		$this->settings_key = $this->settings::SETTINGS_NAME;
+		$this->settings_key      = $this->settings::SETTINGS_NAME;
 
 		// Define fields.
 		$this->fields = array(
@@ -91,7 +91,7 @@ class Integrate_PHWA_Admin_Section_General {
 			),
 		);
 
-		// Define settings sections.
+		// Define settings panels.
 		$this->settings_sections = array(
 			'general' => array(
 				'title'    => $this->title,
@@ -106,3 +106,14 @@ class Integrate_PHWA_Admin_Section_General {
 	}
 
 }
+
+// Bootstrap.
+add_filter(
+	'integrate_phwa_admin_settings_register_sections',
+	function ( $sections ) {
+
+		$sections['general'] = new Integrate_PHWA_Admin_Section_General();
+		return $sections;
+
+	}
+);
