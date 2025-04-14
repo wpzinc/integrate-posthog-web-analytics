@@ -93,13 +93,13 @@ class Integrate_PHWA_API {
 	 */
 	public function send_events() {
 
-		var_dump( $this->events );
-		die();
-
 		// Bail if no events to send.
 		if ( empty( $this->events ) ) {
 			return;
 		}
+
+		error_log( print_r( $this->events, true ) );
+		return;
 
 		// Send events to PostHog.
 		$this->post(
