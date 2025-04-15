@@ -229,4 +229,17 @@ class Plugin extends \Codeception\Module
 			)
 		);
 	}
+
+	/**
+	 * Helper method to reset the Plugin's settings.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @param   EndToEndTester $I  EndToEndTester.
+	 */
+	public function resetPostHogPlugin($I)
+	{
+		$I->dontHaveOptionInDatabase('_integrate_phwa_settings');
+		$I->dontHaveOptionInDatabase('_integrate_phwa_settings_woocommerce');
+	}
 }
