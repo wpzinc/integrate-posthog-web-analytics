@@ -27,9 +27,9 @@ For those needing to meet GDPR, HIPAA or other privacy requirements, the plugin 
 
 === WooCommerce ===
 
-PostHog will track WooCommerce cart and checkout events:
+Integrate PostHog Web Analytics can also track WooCommerce product, cart and checkout events:
 
-[youtube @TODO]
+[youtube https://www.youtube.com/watch?v=IAdhiIM_fmE]
 
 === External services ===
 

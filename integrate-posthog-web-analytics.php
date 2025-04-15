@@ -8,7 +8,7 @@
  * @wordpress-plugin
  * Plugin Name: Integrate PostHog Web Analytics and Event Tracking
  * Plugin URI: http://www.wpzinc.com/documentation/posthog
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: WP Zinc
  * Author URI: http://www.wpzinc.com
  * Description: Unofficial Plugin to integrate PostHog's web analytics and event tracking to your WordPress web site.
