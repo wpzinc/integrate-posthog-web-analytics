@@ -51,8 +51,8 @@ class PluginWooCommerceSettingsCest
 		// Activate WooCommerce.
 		$I->activateThirdPartyPlugin($I, 'woocommerce');
 
-		// Load settings screen.
-		$I->amOnPluginSettingsScreen($I);
+		// Load WooCommerce settings screen.
+		$I->amOnPluginWooCommerceSettingsScreen($I);
 
 		// Fill settings.
 		$I->checkOption('_integrate_phwa_settings_woocommerce[event_view_product]');
