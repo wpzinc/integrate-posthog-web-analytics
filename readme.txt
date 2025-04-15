@@ -78,7 +78,7 @@ No, the plugin is optimized for performance with minimal impact on page load tim
 == Changelog ==
 
 ### 1.1.0
-* Added: Event Tracking: WooCommerce. See Docs: []
+* Added: Event Tracking: WooCommerce. See Docs: https://www.wpzinc.com/documentation/posthog/woocommerce-integration/
 
 ### 1.0.0
 * First release

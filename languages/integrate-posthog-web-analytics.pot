@@ -2,24 +2,21 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Integrate PostHog Web Analytics 1.0.0\n"
+"Project-Id-Version: Integrate PostHog Web Analytics and Event Tracking 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/integrate-posthog-web-analytics\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-09T10:53:23+00:00\n"
+"POT-Creation-Date: 2025-04-15T05:06:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: integrate-posthog-web-analytics\n"
 
 #. Plugin Name of the plugin
 #: integrate-posthog-web-analytics.php
-#: includes/admin/class-integrate-phwa-admin-settings.php:87
-#: includes/class-integrate-phwa.php:109
-#: includes/class-integrate-phwa.php:110
-msgid "Integrate PostHog Web Analytics"
+msgid "Integrate PostHog Web Analytics and Event Tracking"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -29,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: integrate-posthog-web-analytics.php
-msgid "Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site."
+msgid "Unofficial Plugin to integrate PostHog's web analytics and event tracking to your WordPress web site."
 msgstr ""
 
 #. Author of the plugin
@@ -47,63 +44,69 @@ msgid "General Settings"
 msgstr ""
 
 #: includes/admin/class-integrate-phwa-admin-section-general.php:38
+msgid "Enter your Project API Key and Project ID to enable web analytics tracking."
+msgstr ""
+
+#: includes/admin/class-integrate-phwa-admin-section-general.php:39
 msgid "General"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:102
+#: includes/admin/class-integrate-phwa-admin-section-general.php:46
 msgid "Project API Key"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:107
+#: includes/admin/class-integrate-phwa-admin-section-general.php:51
 msgid "Copy the Project API Key from the PostHog > Settings > Project, entering it here."
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:111
+#: includes/admin/class-integrate-phwa-admin-section-general.php:55
 msgid "Project ID"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:116
+#: includes/admin/class-integrate-phwa-admin-section-general.php:60
 msgid "Copy the Project ID from the PostHog > Settings > Project, entering it here."
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:120
+#: includes/admin/class-integrate-phwa-admin-section-general.php:64
 msgid "Project region"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:125
+#: includes/admin/class-integrate-phwa-admin-section-general.php:69
 msgid "Define the region where your PostHog data is hosted."
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:133
+#: includes/admin/class-integrate-phwa-admin-section-general.php:77
 msgid "Persistence"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:138
+#: includes/admin/class-integrate-phwa-admin-section-general.php:82
 msgid "Where to store user data. Use `memory` to meet GDPR, HIPAA or other privacy requirements."
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:140
+#: includes/admin/class-integrate-phwa-admin-section-general.php:84
 msgid "Local Storage + Cookie"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:141
+#: includes/admin/class-integrate-phwa-admin-section-general.php:85
 msgid "Cookie"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:142
+#: includes/admin/class-integrate-phwa-admin-section-general.php:86
 msgid "Local Storage"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:143
+#: includes/admin/class-integrate-phwa-admin-section-general.php:87
 msgid "Session Storage"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:144
+#: includes/admin/class-integrate-phwa-admin-section-general.php:88
 msgid "Memory"
 msgstr ""
 
-#: includes/admin/class-integrate-phwa-admin-section-general.php:187
-msgid "Enter your Project API Key and Project ID to enable web analytics tracking."
+#: includes/admin/class-integrate-phwa-admin-settings.php:87
+#: includes/class-integrate-phwa.php:109
+#: includes/class-integrate-phwa.php:110
+msgid "Integrate PostHog Web Analytics"
 msgstr ""
 
 #: includes/admin/class-integrate-phwa-admin-settings.php:90
@@ -131,6 +134,66 @@ msgstr ""
 
 #: includes/class-integrate-phwa.php:200
 msgid "Integrate PostHog Web Analytics Error"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:37
+msgid "WooCommerce Settings"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:38
+msgid "Define the WooCommerce events to track."
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:39
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:46
+msgid "Event: View Product"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:51
+msgid "If enabled, tracks viewing a product."
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:55
+msgid "Event: Add to Cart"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:60
+msgid "If enabled, tracks adding a product to the cart."
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:64
+msgid "Event: Update Cart"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:69
+msgid "If enabled, tracks updating the cart."
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:73
+msgid "Event: View Cart"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:78
+msgid "If enabled, tracks viewing the cart."
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:82
+msgid "Event: Checkout Started"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:87
+msgid "If enabled, tracks the view checkout event."
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:91
+msgid "Event: Checkout Completed"
+msgstr ""
+
+#: includes/integrations/woocommerce/class-integrate-phwa-admin-section-woocommerce.php:96
+msgid "If enabled, tracks the checkout completed event."
 msgstr ""
 
 #: views/admin/fields/field.php:118
