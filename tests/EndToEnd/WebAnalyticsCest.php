@@ -83,7 +83,7 @@ class WebAnalyticsCest
 		$I->click('#submit');
 
 		// Check that the settings were saved.
-		$I->waitForElementVisible('.div.notice-success');
+		$I->waitForElementVisible('div.notice-success');
 		$I->seeInField('_integrate_phwa_settings[project_api_key]', $_ENV['POSTHOG_PROJECT_API_KEY']);
 		$I->seeInField('_integrate_phwa_settings[project_id]', $_ENV['POSTHOG_PROJECT_ID']);
 		$I->seeOptionIsSelected('_integrate_phwa_settings[persistence]', 'Memory');

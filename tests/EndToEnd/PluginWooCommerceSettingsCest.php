@@ -66,7 +66,7 @@ class PluginWooCommerceSettingsCest
 		$I->click('#submit');
 
 		// Check that the settings were saved.
-		$I->waitForElementVisible('.div.notice-success');
+		$I->waitForElementVisible('div.notice-success');
 		$I->seeCheckboxIsChecked('_integrate_phwa_settings_woocommerce[event_view_product]', '1');
 		$I->seeOptionIsSelected('_integrate_phwa_settings_woocommerce[event_add_to_cart]', '1');
 		$I->seeOptionIsSelected('_integrate_phwa_settings_woocommerce[event_update_cart]', '1');
