@@ -3,9 +3,9 @@ Contributors: wpzinc
 Donate link: https://www.wpzinc.com/documentation/posthog
 Tags: posthog, analytics
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Unofficial Plugin to integrate PostHog's web analytics tracking script to your W
 
 == Description ==
 
-Unofficial Plugin to integrate PostHog's web analytics tracking script to your WordPress web site.  With PostHog, you can:
+Unofficial Plugin to integrate PostHog's web analytics and event tracking on your WordPress web site.  With PostHog, you can:
 * Track visitor behavior and engagement across your WordPress site
 * Analyze user journeys and conversion funnels
 * Monitor key metrics like pageviews, session duration, and bounce rates
@@ -21,9 +21,15 @@ Unofficial Plugin to integrate PostHog's web analytics tracking script to your W
 * View detailed analytics reports and dashboards
 * Make data-driven decisions to optimize your site
 
+For those needing to meet GDPR, HIPAA or other privacy requirements, the plugin can be set in a cookieless mode.
+
 [youtube https://www.youtube.com/watch?v=TZnSXIQeSc0]
 
-For those needing to meet GDPR, HIPAA or other privacy requirements, the plugin can be set in a cookieless mode.
+=== WooCommerce ===
+
+PostHog will track WooCommerce cart and checkout events:
+
+[youtube @TODO]
 
 === External services ===
 
@@ -70,6 +76,9 @@ No, the plugin is optimized for performance with minimal impact on page load tim
 1. General settings
 
 == Changelog ==
+
+### 1.1.0
+* Added: Event Tracking: WooCommerce. See Docs: []
 
 ### 1.0.0
 * First release

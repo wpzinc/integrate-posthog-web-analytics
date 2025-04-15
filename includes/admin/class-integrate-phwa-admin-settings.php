@@ -148,8 +148,8 @@ class Integrate_PHWA_Admin_Settings {
 			return sanitize_text_field( wp_unslash( $_GET['tab'] ) ); // phpcs:ignore WordPress.Security.NonceVerification
 		}
 
-		// First registered section will be the active section.
-		return current( $this->sections )->name;
+		// If no tab, use the first registered section (general).
+		return 'general';
 
 	}
 
@@ -208,7 +208,7 @@ class Integrate_PHWA_Admin_Settings {
 								'page' => 'integrate-posthog-web-analytics',
 								'tab'  => $section->name,
 							),
-							admin_url( 'admin.php' )
+							admin_url( 'options-general.php' )
 						)
 					),
 					( $active_section === $section->name ? 'nav-tab-active' : '' ),
@@ -230,10 +230,7 @@ class Integrate_PHWA_Admin_Settings {
 	 */
 	public function register_sections() {
 
-		// Register the General settings sections.
-		$sections = array(
-			'general' => new Integrate_PHWA_Admin_Section_General(),
-		);
+		$sections = array();
 
 		/**
 		 * Registers settings sections.

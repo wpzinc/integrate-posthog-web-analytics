@@ -28,7 +28,7 @@ class Integrate_PHWA_Settings {
 	 *
 	 * @var     string
 	 */
-	const SETTINGS_NAME = '_Integrate_PHWA_settings';
+	const SETTINGS_NAME = '_integrate_phwa_settings';
 
 	/**
 	 * Constructor. Reads settings from options table, falling back to defaults
@@ -64,6 +64,19 @@ class Integrate_PHWA_Settings {
 	}
 
 	/**
+	 * Returns true if the Project API Key is set.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @return  bool
+	 */
+	public function has_project_api_key() {
+
+		return ! empty( $this->settings['project_api_key'] );
+
+	}
+
+	/**
 	 * Returns the Project ID setting.
 	 *
 	 * @since   1.0.0
@@ -73,6 +86,19 @@ class Integrate_PHWA_Settings {
 	public function project_id() {
 
 		return $this->settings['project_id'];
+
+	}
+
+	/**
+	 * Returns true if the Project ID is set.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @return  bool
+	 */
+	public function has_project_id() {
+
+		return ! empty( $this->settings['project_id'] );
 
 	}
 
@@ -90,6 +116,19 @@ class Integrate_PHWA_Settings {
 	}
 
 	/**
+	 * Returns true if the Project Region is set.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @return  bool
+	 */
+	public function has_project_region() {
+
+		return ! empty( $this->settings['project_region'] );
+
+	}
+
+	/**
 	 * Returns the Persistence setting.
 	 *
 	 * @since   1.0.0
@@ -99,6 +138,19 @@ class Integrate_PHWA_Settings {
 	public function persistence() {
 
 		return $this->settings['persistence'];
+
+	}
+
+	/**
+	 * Returns true if the Plugin has its API Key and Region set.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @return  bool
+	 */
+	public function enabled() {
+
+		return $this->has_project_api_key() && $this->has_project_region();
 
 	}
 

@@ -171,4 +171,75 @@ class Plugin extends \Codeception\Module
 		// Wait for the Dashboard page to load, to confirm login succeeded.
 		$I->waitForElementVisible('body.index-php');
 	}
+
+	/**
+	 * Helper method to load the Plugin's Settings screen.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @param   EndToEndTester $I     EndToEndTester.
+	 */
+	public function amOnPluginSettingsScreen($I)
+	{
+		$I->amOnAdminPage('options-general.php?page=integrate-posthog-web-analytics');
+
+		// Check that no PHP warnings or notices were output.
+		$I->checkNoWarningsAndNoticesOnScreen($I);
+
+		$I->see('General Settings');
+	}
+
+	/**
+	 * Helper method to load the Plugin's WooCommerceSettings screen.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @param   EndToEndTester $I     EndToEndTester.
+	 */
+	public function amOnPluginWooCommerceSettingsScreen($I)
+	{
+		$I->amOnAdminPage('options-general.php?page=integrate-posthog-web-analytics&tab=woocommerce');
+
+		// Check that no PHP warnings or notices were output.
+		$I->checkNoWarningsAndNoticesOnScreen($I);
+
+		$I->see('WooCommerce Settings');
+	}
+
+	/**
+	 * Helper method to configure the Plugin's general settings.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @param   EndToEndTester $I           EndToEndTester.
+	 * @param   string         $apiKey      Project API Key.
+	 * @param   string         $projectID   Project ID.
+	 * @param   string         $region      Project Region.
+	 * @param   string         $persistence Persistence.
+	 */
+	public function configurePluginGeneralSettings($I, $apiKey = false, $projectID = false, $region = 'us', $persistence = 'localStorage+cookie')
+	{
+		$I->haveOptionInDatabase(
+			'_integrate_phwa_settings',
+			array(
+				'project_api_key' => $apiKey ? $apiKey : $_ENV['POSTHOG_PROJECT_API_KEY'],
+				'project_id'      => $projectID ? $projectID : $_ENV['POSTHOG_PROJECT_ID'],
+				'project_region'  => $region,
+				'persistence'     => $persistence,
+			)
+		);
+	}
+
+	/**
+	 * Helper method to reset the Plugin's settings.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @param   EndToEndTester $I  EndToEndTester.
+	 */
+	public function resetPostHogPlugin($I)
+	{
+		$I->dontHaveOptionInDatabase('_integrate_phwa_settings');
+		$I->dontHaveOptionInDatabase('_integrate_phwa_settings_woocommerce');
+	}
 }

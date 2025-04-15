@@ -6,6 +6,11 @@
  * @author WP Zinc
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * PostHog settings section trait class.
  *
@@ -33,6 +38,24 @@ trait Integrate_PHWA_Admin_Section_Trait {
 	public $title = '';
 
 	/**
+	 * Section description
+	 *
+	 * @since   1.1.0
+	 *
+	 * @var string
+	 */
+	public $description = '';
+
+	/**
+	 * Section documentation URL
+	 *
+	 * @since   1.1.0
+	 *
+	 * @var string
+	 */
+	public $documentation_url = '';
+
+	/**
 	 * Section tab text
 	 *
 	 * @since   1.0.0
@@ -55,9 +78,18 @@ trait Integrate_PHWA_Admin_Section_Trait {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @var     false|Integrate_PHWA_Settings
+	 * @var     false|Integrate_PHWA_Settings|Integrate_PHWA_Settings_WooCommerce
 	 */
 	public $settings;
+
+	/**
+	 * Holds the settings fields for a settings screen.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @var     array
+	 */
+	public $fields = array();
 
 	/**
 	 * Holds the settings sections for a settings screen.
@@ -77,6 +109,32 @@ trait Integrate_PHWA_Admin_Section_Trait {
 	 * @var     bool
 	 */
 	public $save_disabled = false;
+
+	/**
+	 * Registers settings fields for this section.
+	 *
+	 * @since   1.1.0
+	 */
+	public function register_fields() {
+
+		// Add settings fields.
+		foreach ( $this->fields as $id => $field ) {
+			add_settings_field(
+				$id,
+				$field['title'],
+				( array_key_exists( 'callback', $field ) ? $field['callback'] : array( $this, $field['props']['type'] . '_field_callback' ) ),
+				$this->settings_key,
+				$field['section'],
+				array_merge(
+					$field['props'],
+					array(
+						'name' => $id,
+					)
+				)
+			);
+		}
+
+	}
 
 	/**
 	 * Helper method to determine if we're viewing the current settings screen.
@@ -227,6 +285,42 @@ trait Integrate_PHWA_Admin_Section_Trait {
 
 		// Return settings to be saved.
 		return $updated_settings;
+
+	}
+
+	/**
+	 * Prints help info for the general section of the settings screen.
+	 *
+	 * @since   1.0.0
+	 */
+	public function print_section_info() {
+
+		// Bail if no description is set.
+		if ( empty( $this->description ) ) {
+			return;
+		}
+
+		?>
+		<p class="description"><?php esc_html( $this->description ); ?></p>
+		<?php
+
+	}
+
+	/**
+	 * Returns the URL for the Plugin documentation for this setting section.
+	 *
+	 * @since   1.0.0
+	 *
+	 * @return  string  Documentation URL.
+	 */
+	public function documentation_url() {
+
+		// Bail if no documentation URL is set.
+		if ( empty( $this->documentation_url ) ) {
+			return 'https://www.wpzinc.com/documentation/posthog';
+		}
+
+		return $this->documentation_url;
 
 	}
 
