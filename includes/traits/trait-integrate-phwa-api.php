@@ -47,6 +47,15 @@ trait Integrate_PHWA_API_Trait {
 	public $events = array();
 
 	/**
+	 * Holds the PostHog user distinct ID.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @var     string
+	 */
+	private $distinct_id = '';
+
+	/**
 	 * Add an event to the batch for sending when later calling batch_capture().
 	 *
 	 * @since   1.1.0
@@ -56,10 +65,16 @@ trait Integrate_PHWA_API_Trait {
 	 */
 	public function capture_event( $event_name, $properties = array() ) {
 
-		// If the user is logged in, add the user ID to the properties.
-		if ( is_user_logged_in() ) {
-			$properties['distinct_id'] = get_current_user_id();
+		// Set distinct ID.
+		$this->set_distinct_id();
+
+		// Bail if no distinct ID.
+		if ( ! $this->distinct_id ) {
+			return;
 		}
+
+		// Add distinct ID to properties.
+		$properties['distinct_id'] = $this->distinct_id;
 
 		// Store event.
 		$this->events[] = array(
@@ -173,6 +188,7 @@ trait Integrate_PHWA_API_Trait {
 	 * @param   string            $cmd                      Command (required).
 	 * @param   string            $method                   HTTP Method (optional).
 	 * @param   array|bool|string $params                   Params.
+	 * @return  WP_Error|string|object
 	 */
 	private function request( $cmd, $method = 'get', $params = array() ) {
 
@@ -231,6 +247,8 @@ trait Integrate_PHWA_API_Trait {
 				break;
 		}
 
+		return $result;
+
 	}
 
 	/**
@@ -247,6 +265,32 @@ trait Integrate_PHWA_API_Trait {
 			'Content-Type' => 'application/json',
 		);
 
+	}
+
+	/**
+	 * Sets the distinct ID from the cookie.
+	 *
+	 * @since   1.1.0
+	 */
+	private function set_distinct_id() {
+
+		// If a distinct ID is already set, return it.
+		if ( $this->distinct_id ) {
+			return $this->distinct_id;
+		}
+
+		// If the ph_phc_* cookie exists, use the distinct ID from it.
+		// This is set by the PostHog JavaScript snippet.
+		foreach ( $_COOKIE as $name => $value ) {
+			if ( strpos($name, 'ph_phc_') === 0 ) {
+				$data = json_decode( stripslashes( $value ) );
+				if ( $data->distinct_id ) {
+					$this->distinct_id = $data->distinct_id;
+					break;
+				}
+			}
+		}
+	
 	}
 
 }

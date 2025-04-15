@@ -86,7 +86,7 @@ class Integrate_PHWA_WooCommerce {
 			'product_price' => $product->get_price(),
 		);
 
-		$this->capture_event( 'view_product', $properties );
+		$this->capture_event( 'WooCommerce: View Product', $properties );
 
 	}
 
@@ -113,7 +113,7 @@ class Integrate_PHWA_WooCommerce {
 		}
 
 		// Capture event.
-		$this->capture_event( 'add_to_cart', $this->get_product_data( $product, $variation_id, $request_quantity ) );
+		$this->capture_event( 'WooCommerce: Add Product to Cart', $this->get_product_data( $product, $variation_id, $request_quantity ) );
 
 	}
 
@@ -127,7 +127,7 @@ class Integrate_PHWA_WooCommerce {
 	 */
 	public function update_cart( $type ) {
 
-		$this->capture_event( 'cart_updated', $this->get_cart_data() );
+		$this->capture_event( 'WooCommerce: Update Cart', $this->get_cart_data() );
 
 		return $type;
 
@@ -140,7 +140,7 @@ class Integrate_PHWA_WooCommerce {
 	 */
 	public function view_cart() {
 
-		$this->capture_event( 'cart_view', $this->get_cart_data() );
+		$this->capture_event( 'WooCommerce: View Cart', $this->get_cart_data() );
 
 	}
 
@@ -151,7 +151,7 @@ class Integrate_PHWA_WooCommerce {
 	 */
 	public function view_checkout() {
 
-		$this->capture_event( 'checkout_view', $this->get_cart_data() );
+		$this->capture_event( 'WooCommerce: Checkout Started', $this->get_cart_data() );
 
 	}
 
@@ -190,7 +190,7 @@ class Integrate_PHWA_WooCommerce {
 			'products'        => $products,
 		);
 
-		$this->capture_event( 'checkout_completed', $properties );
+		$this->capture_event( 'WooCommerce: Checkout Completed', $properties );
 
 	}
 

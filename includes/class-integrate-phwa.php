@@ -66,7 +66,7 @@ class Integrate_PHWA {
 		// Plugin Details.
 		$this->plugin                    = new stdClass();
 		$this->plugin->name              = 'integrate-posthog-web-analytics';
-		$this->plugin->displayName       = 'Integrate PostHog Web Analytics';
+		$this->plugin->displayName       = 'PostHog';
 		$this->plugin->author_name       = 'WP Zinc';
 		$this->plugin->version           = INTEGRATE_PHWA_PLUGIN_VERSION;
 		$this->plugin->buildDate         = INTEGRATE_PHWA_PLUGIN_BUILD_DATE;
@@ -106,8 +106,8 @@ class Integrate_PHWA {
 	public function admin_menu( $minimum_capability ) {
 
 		add_options_page(
-			__( 'Integrate PostHog Web Analytics', 'integrate-posthog-web-analytics' ),
-			__( 'Integrate PostHog Web Analytics', 'integrate-posthog-web-analytics' ),
+			__( 'PostHog', 'integrate-posthog-web-analytics' ),
+			__( 'PostHog', 'integrate-posthog-web-analytics' ),
 			$minimum_capability,
 			$this->plugin->name,
 			array( $this->classes['admin_settings'], 'display_settings_page' )
