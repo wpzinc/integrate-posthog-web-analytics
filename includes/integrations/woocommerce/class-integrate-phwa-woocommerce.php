@@ -175,7 +175,7 @@ class Integrate_PHWA_WooCommerce {
 		$items    = $order->get_items();
 		$products = array();
 		foreach ( $items as $item ) {
-			$products[] = $this->get_product_data( $item->get_product(), $item->get_variation_id(), $item->get_quantity() );
+			$products[] = $this->get_product_data( $item->get_product(), $item->get_variation_id(), $item->get_quantity() ); // @phpstan-ignore-line
 		}
 
 		// Build properties.
@@ -234,7 +234,7 @@ class Integrate_PHWA_WooCommerce {
 	 * @param   integer    $quantity     Quantity.
 	 * @return  array                    Product data.
 	 */
-	private function get_product_data( $product, $variation_id = false, $quantity = 1 ) {
+	private function get_product_data( $product, $variation_id = 0, $quantity = 1 ) {
 
 		// Build properties.
 		$properties = array(
@@ -250,7 +250,7 @@ class Integrate_PHWA_WooCommerce {
 			$properties['product_variation_id']         = $variation_id;
 			$variation_product                          = wc_get_product( $variation_id );
 			$properties['product_variation_sku']        = $variation_product->get_sku();
-			$properties['product_variation_attributes'] = $variation_product->get_variation_attributes();
+			$properties['product_variation_attributes'] = $variation_product->get_variation_attributes(); // @phpstan-ignore-line
 		}
 
 		return $properties;

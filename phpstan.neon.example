@@ -9,12 +9,12 @@ parameters:
     # Paths to scan
     # This should comprise of the base Plugin PHP file, plus directories that contain Plugin PHP files
     paths:
-        - posthog.php
+        - integrate-posthog-web-analytics.php
         - includes/
 
-    # Files that include Plugin-specific PHP constants.
+    # Files that include Plugin-specific PHP constants or classes not directly initialized.
     bootstrapFiles:
-        - posthog.php
+        - integrate-posthog-web-analytics.php
 
     # Location of WordPress Plugins for PHPStan to scan, building symbols.
     scanDirectories:

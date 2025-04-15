@@ -78,7 +78,7 @@ trait Integrate_PHWA_Admin_Section_Trait {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @var     false|Integrate_PHWA_Settings
+	 * @var     false|Integrate_PHWA_Settings|Integrate_PHWA_Settings_WooCommerce
 	 */
 	public $settings;
 
@@ -317,7 +317,7 @@ trait Integrate_PHWA_Admin_Section_Trait {
 
 		// Bail if no documentation URL is set.
 		if ( empty( $this->documentation_url ) ) {
-			return;
+			return 'https://www.wpzinc.com/documentation/posthog';
 		}
 
 		return $this->documentation_url;

@@ -185,9 +185,9 @@ trait Integrate_PHWA_API_Trait {
 	 *
 	 * @since   1.1.0
 	 *
-	 * @param   string            $cmd                      Command (required).
-	 * @param   string            $method                   HTTP Method (optional).
-	 * @param   array|bool|string $params                   Params.
+	 * @param   string $cmd                      Command (required).
+	 * @param   string $method                   HTTP Method (optional).
+	 * @param   array  $params                   Params.
 	 * @return  WP_Error|string|object
 	 */
 	private function request( $cmd, $method = 'get', $params = array() ) {
@@ -240,7 +240,7 @@ trait Integrate_PHWA_API_Trait {
 					$endpoint . $cmd,
 					array(
 						'headers' => $this->get_headers(),
-						'body'    => ( $params !== false ? $params : '' ),
+						'body'    => $params,
 						'timeout' => $this->get_timeout(),
 					)
 				);
