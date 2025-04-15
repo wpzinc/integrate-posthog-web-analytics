@@ -89,5 +89,6 @@ class PluginWooCommerceSettingsCest
 	public function _passed(EndToEndTester $I)
 	{
 		$I->deactivatePostHogPlugin($I);
+		$I->resetPostHogPlugin($I);
 	}
 }
