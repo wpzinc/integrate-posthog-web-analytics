@@ -282,7 +282,7 @@ trait Integrate_PHWA_API_Trait {
 		// If the ph_phc_* cookie exists, use the distinct ID from it.
 		// This is set by the PostHog JavaScript snippet.
 		foreach ( $_COOKIE as $name => $value ) {
-			if ( strpos($name, 'ph_phc_') === 0 ) {
+			if ( strpos( $name, 'ph_phc_' ) === 0 ) {
 				$data = json_decode( stripslashes( $value ) );
 				if ( $data->distinct_id ) {
 					$this->distinct_id = $data->distinct_id;
@@ -290,7 +290,7 @@ trait Integrate_PHWA_API_Trait {
 				}
 			}
 		}
-	
+
 	}
 
 }

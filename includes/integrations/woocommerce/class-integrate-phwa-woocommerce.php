@@ -29,7 +29,7 @@ class Integrate_PHWA_WooCommerce {
 	public function __construct() {
 
 		// Bail if WooCommerce is not active.
-		if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		if ( ! function_exists( 'WC' ) ) {
 			return;
 		}
 

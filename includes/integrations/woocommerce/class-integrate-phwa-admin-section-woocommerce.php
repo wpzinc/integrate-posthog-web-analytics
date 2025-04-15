@@ -119,6 +119,11 @@ add_filter(
 	'integrate_phwa_admin_settings_register_sections',
 	function ( $sections ) {
 
+		// Bail if WooCommerce is not active.
+		if ( ! function_exists( 'WC' ) ) {
+			return $sections;
+		}
+
 		$sections['woocommerce'] = new Integrate_PHWA_Admin_Section_WooCommerce();
 		return $sections;
 
