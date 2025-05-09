@@ -55,6 +55,8 @@ class Integrate_PHWA_Output {
 		);
 		wp_add_inline_script( 'integrate-phwa', 'posthog.init("' . esc_js( $settings->project_api_key() ) . '", ' . $settings->get_js_init_config() . ')', 'after' );
 
+		// Request review.
+		integrate_phwa()->dashboard->request_review();
 	}
 
 }
