@@ -77,6 +77,9 @@ No, the plugin is optimized for performance with minimal impact on page load tim
 
 == Changelog ==
 
+### 1.1.2
+* Fix: PHP Notice: Function `_load_textdomain_just_in_time` was called incorrectly
+
 ### 1.1.1
 * Added: Event Tracking: WooCommerce. See Docs: https://www.wpzinc.com/documentation/posthog/woocommerce-integration/
 

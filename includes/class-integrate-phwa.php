@@ -76,11 +76,7 @@ class Integrate_PHWA {
 		$this->plugin->support_url       = 'https://www.wpzinc.com/support';
 		$this->plugin->logo              = INTEGRATE_PHWA_PLUGIN_URL . 'assets/images/icons/logo.svg';
 		$this->plugin->review_name       = 'integrate-posthog-web-analytics';
-		$this->plugin->review_notice     = sprintf(
-			/* translators: Plugin Name */
-			__( 'Thanks for using %s to track your web analytics!', 'integrate-posthog-web-analytics' ),
-			$this->plugin->displayName
-		);
+		$this->plugin->review_notice     = 'Thanks for using Integrate PostHog Web Analytics to track your web analytics!';
 
 		// Dashboard Submodule.
 		if ( ! class_exists( 'WPZincDashboardWidget' ) ) {
