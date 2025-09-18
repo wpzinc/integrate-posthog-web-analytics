@@ -57,10 +57,32 @@ class Integrate_PHWA_WooCommerce {
 			add_filter( 'woocommerce_cart_updated_notice_type', array( $this, 'update_cart' ) );
 		}
 		if ( $settings->event_view_cart() ) {
+			// Non-block based carts.
 			add_action( 'woocommerce_before_cart', array( $this, 'view_cart' ) );
+
+			// Block based carts.
+			add_action(
+				'template_redirect',
+				function () {
+					if ( function_exists( 'is_cart' ) && is_cart() ) {
+						$this->view_cart();
+					}
+				}
+			);
 		}
 		if ( $settings->event_view_checkout() ) {
+			// Non-block based checkout.
 			add_action( 'woocommerce_before_checkout_form', array( $this, 'view_checkout' ) );
+
+			// Block based checkout.
+			add_action(
+				'template_redirect',
+				function () {
+					if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+						$this->view_checkout();
+					}
+				}
+			);
 		}
 		if ( $settings->event_completed_checkout() ) {
 			add_action( 'woocommerce_thankyou', array( $this, 'completed_checkout' ), 10, 1 );
