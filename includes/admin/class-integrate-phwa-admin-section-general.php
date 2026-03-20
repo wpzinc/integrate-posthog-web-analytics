@@ -42,7 +42,7 @@ class Integrate_PHWA_Admin_Section_General {
 
 		// Define fields.
 		$this->fields = array(
-			'project_api_key' => array(
+			'project_api_key'      => array(
 				'title'   => __( 'Project API Key', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -51,7 +51,7 @@ class Integrate_PHWA_Admin_Section_General {
 					'description' => esc_html__( 'Copy the Project API Key from the PostHog > Settings > Project, entering it here.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'project_id'      => array(
+			'project_id'           => array(
 				'title'   => __( 'Project ID', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -60,7 +60,7 @@ class Integrate_PHWA_Admin_Section_General {
 					'description' => esc_html__( 'Copy the Project ID from the PostHog > Settings > Project, entering it here.', 'integrate-posthog-web-analytics' ),
 				),
 			),
-			'project_region'  => array(
+			'project_region'       => array(
 				'title'   => __( 'Project region', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(
@@ -73,7 +73,16 @@ class Integrate_PHWA_Admin_Section_General {
 					),
 				),
 			),
-			'persistence'     => array(
+			'reverse_proxy_domain' => array(
+				'title'   => __( 'Reverse Proxy Domain', 'integrate-posthog-web-analytics' ),
+				'section' => $this->name,
+				'props'   => array(
+					'type'        => 'text',
+					'value'       => $this->settings->reverse_proxy_domain(),
+					'description' => esc_html__( 'Enter the domain of your reverse proxy server.', 'integrate-posthog-web-analytics' ),
+				),
+			),
+			'persistence'          => array(
 				'title'   => __( 'Persistence', 'integrate-posthog-web-analytics' ),
 				'section' => $this->name,
 				'props'   => array(

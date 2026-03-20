@@ -129,6 +129,41 @@ class Integrate_PHWA_Settings {
 	}
 
 	/**
+	 * Returns the Reverse Proxy Domain setting.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @return  string
+	 */
+	public function reverse_proxy_domain() {
+
+		if ( ! $this->has_reverse_proxy_domain() ) {
+			return '';
+		}
+
+		$domain = $this->settings['reverse_proxy_domain'];
+		if ( strpos( $domain, 'http://' ) !== 0 && strpos( $domain, 'https://' ) !== 0 ) {
+			$domain = 'https://' . ltrim( $domain, '/' );
+		}
+
+		return $domain;
+
+	}
+
+	/**
+	 * Returns true if the Reverse Proxy Domain is set.
+	 *
+	 * @since   1.1.0
+	 *
+	 * @return  bool
+	 */
+	public function has_reverse_proxy_domain() {
+
+		return ! empty( $this->settings['reverse_proxy_domain'] );
+
+	}
+
+	/**
 	 * Returns the Persistence setting.
 	 *
 	 * @since   1.0.0
@@ -166,11 +201,44 @@ class Integrate_PHWA_Settings {
 		return wp_unslash(
 			wp_json_encode(
 				array(
-					'api_host'    => 'https://' . esc_attr( $this->project_region() ) . '.i.posthog.com',
+					'api_host'    => $this->get_api_host(),
+					'ui_host'     => $this->get_ui_host(),
 					'persistence' => esc_attr( $this->persistence() ),
 				)
 			)
 		);
+
+	}
+
+	/**
+	 * Returns the API host, depending on whether a Reverse Proxy Domain is set.
+	 *
+	 * @since   1.1.4
+	 *
+	 * @return  string
+	 */
+	public function get_api_host() {
+
+		// If a Reverse Proxy Domain is set, use it.
+		if ( $this->has_reverse_proxy_domain() ) {
+			return $this->reverse_proxy_domain();
+		}
+
+		// Otherwise, use the default API host.
+		return 'https://' . esc_attr( $this->project_region() ) . '.i.posthog.com';
+
+	}
+
+	/**
+	 * Returns the UI host, depending on whether a Reverse Proxy Domain is set.
+	 *
+	 * @since   1.1.4
+	 *
+	 * @return  string
+	 */
+	public function get_ui_host() {
+
+		return 'https://' . esc_attr( $this->project_region() ) . '.posthog.com';
 
 	}
 
@@ -185,10 +253,11 @@ class Integrate_PHWA_Settings {
 	public function get_defaults() {
 
 		$defaults = array(
-			'project_api_key' => '',
-			'project_id'      => '',
-			'project_region'  => 'us',
-			'persistence'     => 'localStorage+cookie',
+			'project_api_key'      => '',
+			'project_id'           => '',
+			'project_region'       => 'us',
+			'reverse_proxy_domain' => '',
+			'persistence'          => 'localStorage+cookie',
 		);
 
 		/**

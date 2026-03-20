@@ -3,9 +3,9 @@ Contributors: wpzinc
 Donate link: https://www.wpzinc.com/documentation/posthog
 Tags: posthog, analytics
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,9 @@ No, the plugin is optimized for performance with minimal impact on page load tim
 1. General settings
 
 == Changelog ==
+
+### 1.1.4 (2026-03-20)
+* Added: Reverse Proxy Domain option. See Docs: https://www.wpzinc.com/documentation/posthog/installation/
 
 ### 1.1.3 (2025-09-18)
 * Fix: Event Tracking: WooCommerce: Improved tracking for block-based carts and checkouts
