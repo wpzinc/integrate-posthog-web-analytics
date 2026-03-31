@@ -115,7 +115,7 @@ class Integrate_PHWA_Admin_Settings {
 					?>
 				</form>
 
-				<p class="description">
+				<p class="description clear">
 					<?php
 					// Output Help link, if it exists.
 					$documentation_url = $this->get_active_section_documentation_url( $active_section );
