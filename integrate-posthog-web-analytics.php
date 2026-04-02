@@ -32,7 +32,7 @@ if ( defined( 'POSTHOG_PLUGIN_VERSION' ) ) {
 
 // Define Plugin version and build date.
 define( 'INTEGRATE_PHWA_PLUGIN_VERSION', '1.1.5' );
-define( 'INTEGRATE_PHWA_PLUGIN_BUILD_DATE', '2026-03-31 18:00:00' );
+define( 'INTEGRATE_PHWA_PLUGIN_BUILD_DATE', '2026-04-02 12:00:00' );
 
 // Define Plugin paths.
 define( 'INTEGRATE_PHWA_PLUGIN_FILE', plugin_basename( __FILE__ ) );

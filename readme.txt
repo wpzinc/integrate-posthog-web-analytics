@@ -77,7 +77,7 @@ No, the plugin is optimized for performance with minimal impact on page load tim
 
 == Changelog ==
 
-### 1.1.5 (2026-03-31)
+### 1.1.5 (2026-04-02)
 * Updated: Dashboard submodule
 
 ### 1.1.4 (2026-03-20)
