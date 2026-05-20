@@ -3,9 +3,9 @@ Contributors: wpzinc
 Donate link: https://www.wpzinc.com/documentation/posthog
 Tags: posthog, analytics
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,9 @@ No, the plugin is optimized for performance with minimal impact on page load tim
 1. General settings
 
 == Changelog ==
+
+### 1.1.6 (2026-05-20)
+* WordPress 7.0 compatibility
 
 ### 1.1.5 (2026-04-02)
 * Updated: Dashboard submodule
